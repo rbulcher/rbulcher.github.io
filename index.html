@@ -9,6 +9,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-5ZCXKRV8');</script>
     <!-- End Google Tag Manager -->
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -34,13 +35,28 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Mar 17 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    dataLayer.push({
+        'event': 'page_view',
+        'pagePath': '/home'
+    });
+    const sections = document.querySelectorAll('#header, #about, #facts, #skills, #resume, #portfolio');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      dataLayer.push({
+        'event': 'sectionView',
+        'sectionId': entry.target.id
+      });
+    }
+  });
+});
+
+sections.forEach(section => observer.observe(section));
+</script>
 </head>
 
 <body>
