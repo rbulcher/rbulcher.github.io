@@ -40,7 +40,7 @@
   
     // Ensure to push the initial page view if needed, using the correct event name
     dataLayer.push({
-      'event': 'pageview', // Changed to 'pageview' for consistency
+      'event': 'page_view',
       'pagePath': '/home'
     });
 
@@ -77,8 +77,10 @@
         <ul>
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-code"></i> <span>Skills</span></a></li>
           <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="#testimonials" class="nav-link scrollto"><i class="bx bx-comment"></i> <span>Testimonials</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -89,7 +91,7 @@
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
       <h1>Ryan Bulcher</h1>
-      <p>I'm <span class="typed" data-typed-items="an Engineer,a Ui-Ux Designer, a Developer,a Gamer"></span></p>
+      <p>I'm <span class="typed" data-typed-items="a Developer,a Ui-Ux Designer,an Analytics Engineer,a Gamer"></span></p>
     </div>
   </section><!-- End Hero -->
 
@@ -121,6 +123,8 @@
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>22 June 1999</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Cincinnati, USA</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>24</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Favorite Show:</strong> <span>Game of Thrones</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Favorite Game:</strong> <span>League of Legends</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
@@ -131,9 +135,6 @@
                 </ul>
               </div>
             </div>
-            <p>
-             I curently am a Analytics Engineer at InfoTrust where I focus on implementing JavaScript tags on large ecommerce sites. 
-            </p>
           </div>
         </div>
 
@@ -154,7 +155,7 @@
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
             <div class="count-box">
               <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="13" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Happy Clients</strong> Totalling over 40 Billion USD per year in ecommerce revenue</p>
             </div>
           </div>
@@ -169,9 +170,9 @@
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours of Support</strong> offered to clients per week on average</p>
+              <i class="bi bi-bar-chart-line"></i>
+              <span data-purecounter-start="0" data-purecounter-end="8924" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Users</strong> using my Chrome Extension</p>
             </div>
           </div>
 
@@ -179,7 +180,7 @@
             <div class="count-box">
               <i class="bi bi-code"></i>
               <span data-purecounter-start="0" data-purecounter-end="52086" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Lines of Code Written</strong> , but whose counting</p>
+              <p><strong>Lines of Code Written</strong> but whose counting</p>
             </div>
           </div>
 
@@ -281,7 +282,7 @@
               <h4>Bachelor of Software Engineering</h4>
               <h5>2018 - 2022</h5>
               <p><em>Miami University, Oxford Ohio</em></p>
-              <p>Miami University of Ohio offers a strong software engineering course while also emphasizeing the importance of being a good person. With the core classes being a mixed of soft skills alongside the technical, I developed a uniquely strong ability to produce technically while still being personable. </p>
+              <p>Miami University of Ohio offers a strong software engineering course while also emphasizeing the importance of having people skills. With the core classes being a mixed of soft skills alongside the technical, I developed a uniquely strong ability to produce technically while still being personable. </p>
             </div>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
@@ -293,7 +294,7 @@
               <ul>
                 <li>Joined a team and quickly took over the roles of exiting senior members to maintain and expand support for tag management and software upkeep.</li>
                 <li>Build custom automations using Google APIs to mass create, edit, delete websites / Google Tag Manager setups.</li>
-                <li>Designed and Developed a Google Chrome extension currently used by nearly 10,000 people, enabling users to quickly debug Google Consent Mode.</li>
+                <li>Designed and Developed a Google Chrome extension currently used by over 8,000 people, enabling users to quickly debug Google Consent Mode.</li>
                 <li>Maintain clients that rely on analytics and ecommerce traffic to make decisions that result in billions of revenue each year.</li>
               </ul>
             </div>
@@ -417,7 +418,7 @@
 
         <div class="section-title">
           <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>These are true testimonials from people reaching out or taking the time to leave a review on the Chrome Webstore. These are all in regards to my Chrome Extension which you can find a more detailed view in the Portfolio section.</p>
         </div>
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -427,12 +428,15 @@
               <div class="testimonial-item" data-aos="fade-up">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  Hi Ryan,
+Just wanted to show our appreciation for your chrome extension. My data team and I just got back from the InfoTrust Cookieless conference in London and we booked tickets because of how much we used the extension! Really helpful as we are booking/ investigating work around consent mode v2. Thanks a lot!
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
+                <a href="https://www.linkedin.com/in/george-wellington-4977a3195/" target="_blank">
+                <img src="assets/img/testimonials/testimonials-1.jpeg" class="testimonial-img" alt="">
+                </a>
+                <h3>George Wellington</h3>
+                <h4>Digital Media &amp; Analytics Specialist</h4>
               </div>
             </div><!-- End testimonial item -->
 
@@ -440,12 +444,16 @@
               <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  💡 New favorite extension alert 💡
+The extension looks at the google_tag_data.ics.entries object on the page and visualizes them in an organized, easy-to-digest table format akin to tag assistant. But that's not all – this extension goes the extra mile by decoding and displaying gcs and gcd parameters, coupled with explanations that demystify their functionalities based on our current understanding.
+Thanks Ryan Bulcher for developing this great extension! 🙌 
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
+                <a href="https://www.linkedin.com/in/marouscha-dorenbos/" target="_blank">
+                <img src="assets/img/testimonials/testimonials-2.jpeg" class="testimonial-img" alt="">
+                </a>
+                <h3>Marouscha Dorenbos</h3>
+                <h4>Analytics & CRO Director</h4>
               </div>
             </div><!-- End testimonial item -->
 
@@ -453,12 +461,14 @@
               <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  A great chrome extension here is this one by InfoTrust - Consent Mode inspector. This tells you instantly if your website is configured correctly 🔐 
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
+                <a href="https://www.linkedin.com/in/sam-cox2/" target="_blank">
+                <img src="assets/img/testimonials/testimonials-3.jpeg" class="testimonial-img" alt="">
+                </a>
+                <h3>Sam Cox</h3>
+                <h4>Freelance Web Analytics Expert</h4>
               </div>
             </div><!-- End testimonial item -->
 
@@ -466,28 +476,16 @@
               <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  This extension is perfect for quickly understanding whether a site has consent mode v1 or v2 implemented. If ad_user_data or ad_personalization is either granted and denied I know that I definitely have v2 setup. If the consented values for this parameter are unknown, it would be left as Unknown. Perfect for automating implementation audits.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
+                <a href="https://www.linkedin.com/in/annasinitsyna/" target="_blank">
+                <img src="assets/img/testimonials/testimonials-4.jpeg" class="testimonial-img" alt="">
+                </a>
+                <h3>Anna Sinitsyna</h3>
+                <h4>Digital analytics leader </h4>
               </div>
             </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
           </div>
           <div class="swiper-pagination"></div>
         </div>
