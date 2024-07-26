@@ -1,154 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+	<head>
+		<title>Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript
+			><link rel="stylesheet" href="assets/css/noscript.css"
+		/></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Sidebar -->
+		<section id="sidebar">
+			<div class="inner">
+				<nav>
+					<ul>
+						<li><a href="#intro">Welcome</a></li>
+						<li><a href="#one">Who we are</a></li>
+						<li><a href="#two">How to get started</a></li>
+						<li><a href="#privacy-policy">Privacy Policy</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<!-- Wrapper -->
+		<div id="wrapper">
+			<!-- Intro -->
+			<section id="intro" class="wrapper style1 fullscreen fade-up">
+				<div class="inner">
+					<h1>InboxIQ</h1>
+					<p>
+						A Gmail Ai powered assistant and chat bot. Summarize emails with
+						security and efficiency.<br />
+						Powered by
+						<a
+							href="https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+							target="_blank"
+							>GPT-4o Mini</a
+						>.
+					</p>
+					<ul class="actions">
+						<li><a href="#one" class="button scrolly">Learn more</a></li>
+					</ul>
+				</div>
+			</section>
 
-  <title>InboxIQ - Ryan Bulcher</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+			<!-- One -->
+			<section id="one" class="wrapper style2 spotlights">
+				<section>
+					<div class="content">
+						<div class="inner">
+							<h2>
+								Have you ever been apart of a large email thread and gotten left
+								behind?
+							</h2>
+							<p>
+								Maybe you planned to read at some point, but now there are 20
+								messsages! Or there is long briefing for your next meeting, but
+								you don't have time to read it all. InboxIQ can help you with
+								that.
+							</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="content">
+						<div class="inner">
+							<h2>Security a concern?</h2>
+							<p>
+								This chrome extension was built with security in mind. You
+								provide your own API key and the extension will never store your
+								emails. It will only summarize them and send the summary back to
+								you. We dont even have a server running! Its all done on your
+								device.
+							</p>
+							<ul class="actions">
+								<li><a href="#three">Privacy Policy</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="content">
+						<div class="inner">
+							<h2>Available for free!</h2>
+							<p>
+								While we do offer a Pro version for only $5 a month, the free
+								version gives you a lot of functionality. You can summarize up
+								to 5 emails a day and have access to the chat bot. The Pro
+								version gives you unlimited summaries and follow ups.
+							</p>
+						</div>
+					</div>
+				</section>
+			</section>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+			<!-- Two -->
+			<section id="two" class="wrapper style3 fade-up">
+				<div class="inner">
+					<h2>How does it work?</h2>
+					<p>
+						Two things are required from you; First it only works for Gmail
+						(Sorry outlook people, its a Google Chrome extension), Second you
+						will provide your own API key. This is easy to obtain and we have a
+						guide for you. Once you have the extension installed and the API key
+						in place, you can start summarizing emails.
+					</p>
+					<div class="features">
+						<section>
+							<span class="icon solid major fa-code"></span>
+							<h3>OpenAi API</h3>
+							<p>
+								You need an api key from OpenAi to use the extension. This is
+								for your own security! We dont want to store, process or even
+								look at your emails. OpenAi the creators of Chat GPT offer a
+								robust security policy and are an industry leader in privacy
+								with Ai. Once you obtain an api key from them, you can start
+								using the extension.
+							</p>
+							<ul class="actions">
+								<li>
+									<a href="howToGetApi.html" class="button">Learn more</a>
+								</li>
+							</ul>
+						</section>
+						<section>
+							<span class="icon solid major fa-lock"></span>
+							<h3>Security</h3>
+							<p>
+								We dont use any servers or databases. The extension stores all
+								your conversation data in the browser! So it never leaves your
+								device. This is done by utilizing the Chrome.storage API.
+							</p>
+						</section>
+						<section>
+							<span class="icon solid major fa-cog"></span>
+							<h3>In App Settings</h3>
+							<p>
+								InboxIQ offers multiple settings such as conversation lifetime
+								and the ability to show your unread email count right from the
+								extension bar!
+							</p>
+						</section>
+						<section>
+							<span class="icon solid major fa-desktop"></span>
+							<h3>Sync conversation data accross device</h3>
+							<p>
+								By using the Chrome.storage API, InboxIQ can sync your
+								conversation data accross devices. This is useful if you use
+								multiple devices or need to switch devices.
+							</p>
+						</section>
+					</div>
+				</div>
+			</section>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+			<!-- Three -->
+			<!-- Three -->
+			<section id="privacy-policy" class="wrapper style1 fade-up">
+				<div class="inner">
+					<h2>Privacy Policy</h2>
+					<h3>Introduction</h3>
+					<p>
+						Welcome to InboxIQ. This privacy policy outlines how we collect,
+						use, and protect your information when you use our Chrome extension.
+					</p>
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+					<h3>Information We Process</h3>
+					<p>InboxIQ accesses and processes the following information:</p>
+					<ul>
+						<li>Email content from your Gmail account</li>
+						<li>Email thread IDs</li>
+					</ul>
+					<p>
+						This information is processed within your browser and is also sent
+						to third-party AI services for generating summaries and responses.
+						It is never sent anywhere else to be viewed, processed, or stored by
+						us. This is extremely important to us and why we require users to
+						provide the API key, so the data processed is linked to your own LLM
+						account.
+					</p>
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-</head>
+					<h3>How We Use Information</h3>
+					<p>
+						The information accessed by InboxIQ is used solely for the purpose
+						of providing you with email summaries and facilitating conversations
+						about your emails. While initial processing occurs in your browser,
+						the data is sent to third-party AI services for generating
+						responses.
+					</p>
 
-<body>
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+					<h3>Data Transmission to Third Parties</h3>
+					<p>
+						InboxIQ sends email data to third-party AI services, such as OpenAI,
+						to generate summaries and responses. We require users to provide
+						their own API keys for these services. This practice ensures that:
+					</p>
+					<ul>
+						<li>You have control over which AI service processes your data</li>
+						<li>
+							The processing adheres to the privacy policies of the chosen AI
+							service
+						</li>
+					</ul>
+					<p>
+						For instance, OpenAI's privacy policy states that when you provide
+						your own API key, they do not store or use your data for training
+						purposes. We recommend reviewing the privacy policy of any AI
+						service you choose to use with InboxIQ.
+					</p>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+					<h3>Data Storage</h3>
+					<p>
+						InboxIQ uses Chrome's local storage to save conversation history and
+						settings. This data remains on your device and is not transmitted to
+						or stored on our servers.
+					</p>
 
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Ryan Bulcher</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://twitter.com/ryan_bulcher" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://github.com/rbulcher" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-          <a href="#" class="discord"><i class="bx bxl-discord-alt"></i></a>
-          <a href="https://www.linkedin.com/in/ryan-bulcher-60797a149/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
+					<h3>Third-Party Services</h3>
+					<p>InboxIQ uses the following third-party services:</p>
+					<ul>
+						<li>Google OAuth 2.0 for authentication</li>
+						<li>
+							AI services (such as OpenAI) for generating email summaries and
+							responses
+						</li>
+					</ul>
+					<p>
+						While using these services, please be aware of their respective
+						privacy policies.
+					</p>
 
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.html#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="index.html#skills" class="nav-link scrollto"><i class="bx bx-code"></i> <span>Skills</span></a></li>
-          <li><a href="index.html#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="index.html#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="index.html#testimonials" class="nav-link scrollto"><i class="bx bx-comment"></i> <span>Testimonials</span></a></li>
-          <li><a href="index.html#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+					<h3>Data Security</h3>
+					<p>
+						We take the security of your data seriously. All communication with
+						third-party APIs is done using secure HTTPS connections. Your API
+						keys for AI services are stored securely in Chrome's local storage
+						and are only used to make requests to the respective AI services.
+					</p>
 
-  <main id="main">
+					<h3>User Control</h3>
+					<p>
+						You have full control over the data stored by InboxIQ. You can
+						delete all stored conversations at any time using the 'Delete All'
+						function in the extension. You also control which AI service
+						processes your data by providing your own API key.
+					</p>
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>InboxIQ</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>InboxIQ</li>
-          </ol>
-        </div>
-      </div>
-    </section><!-- End Breadcrumbs -->
+					<h3>Changes to This Policy</h3>
+					<p>
+						We may update this privacy policy from time to time. We will notify
+						users of any changes by posting the new privacy policy on this page
+						and updating the extension.
+					</p>
 
-    <!-- ======= InboxIQ Section ======= -->
-    <section id="inboxiq" class="inboxiq">
-      <div class="container">
-        <div class="section-title">
-          <h2>InboxIQ</h2>
-          <p>Revolutionize Your Email Experience with AI-Powered Insights</p>
-        </div>
+					<h3>Contact Us</h3>
+					<p>
+						If you have any questions about this privacy policy, please contact
+						us at rjbulcher@gmail.com.
+					</p>
 
-        <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-            <h3>About InboxIQ</h3>
-            <p>
-              InboxIQ is an innovative Chrome extension designed to transform the way you interact with your emails. By harnessing the power of artificial intelligence, InboxIQ provides smart summaries and facilitates intelligent conversations about your emails, all within your browser.
-            </p>
-            
-            <h3>Key Features</h3>
-            <ul>
-              <li><strong>AI-Powered Email Summaries:</strong> Get concise summaries of lengthy emails at a glance.</li>
-              <li><strong>Intelligent Conversations:</strong> Engage in meaningful dialogues about your emails with our AI assistant.</li>
-              <li><strong>Privacy-First Approach:</strong> Your data remains in your control, processed using your own AI service API keys.</li>
-              <li><strong>Seamless Integration:</strong> Works directly within your Gmail interface for a smooth user experience.</li>
-            </ul>
+					<p>Last updated: July 22, 2024</p>
+				</div>
+			</section>
+		</div>
 
-            <h3>How It Works</h3>
-            <p>
-              InboxIQ integrates seamlessly with your Gmail account. When you select an email, our extension processes the content locally in your browser. For generating summaries and responses, the data is sent to third-party AI services using your provided API key. This ensures that you have full control over which service processes your data.
-            </p>
-
-            <h3>Privacy and Security</h3>
-            <p>
-              At InboxIQ, we prioritize your privacy and data security. We do not store or access your email data on our servers. All processing is done either locally in your browser or through secure connections to the AI service of your choice. For more details, please read our <a href="privacypolicy.html">Privacy Policy</a>.
-            </p>
-
-            <h3>Get Started</h3>
-            <p>
-              Ready to revolutionize your email experience? Install InboxIQ from the Chrome Web Store and start enjoying smarter, more efficient email management today!
-            </p>
-
-            <div class="text-center">
-              <a href="#" class="btn btn-primary">Install InboxIQ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End InboxIQ Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Ryan Bulcher</span></strong>. All Rights Reserved
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
 </html>
