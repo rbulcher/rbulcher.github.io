@@ -1,148 +1,285 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<title>Getting OpenAI API Key</title>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, user-scalable=no"
+		<title>Getting OpenAI API Key - InboxIQ</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Poppins"
 		/>
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript
-			><link rel="stylesheet" href="assets/css/noscript.css"
-		/></noscript>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		/>
+		<style>
+			body,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5 {
+				font-family: "Poppins", sans-serif;
+			}
+			body {
+				font-size: 16px;
+			}
+			.w3-half img {
+				margin-bottom: 16px;
+				margin-top: 16px;
+			}
+		</style>
 	</head>
-	<body class="is-preload">
-		<!-- Header -->
-		<header id="header">
-			<a href="inboxiq.html" class="title">InboxIQ</a>
-			<nav>
-				<ul>
-					<li><a href="inboxiq.html">Home</a></li>
-					<li><a href="generic.html" class="active">API Key Tutorial</a></li>
-				</ul>
-			</nav>
+	<body>
+		<!-- Sidebar/menu -->
+		<nav
+			class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding"
+			style="z-index: 3; width: 300px; font-weight: bold"
+			id="mySidebar"
+		>
+			<br />
+			<a
+				href="javascript:void(0)"
+				onclick="w3_close()"
+				class="w3-button w3-hide-large w3-display-topleft"
+				style="width: 100%; font-size: 22px"
+				>Close Menu</a
+			>
+			<div class="w3-container">
+				<h3 class="w3-padding-64">
+					<b>InboxIQ<br />API Key Guide</b>
+				</h3>
+			</div>
+			<div class="w3-bar-block">
+				<a
+					href="./inboxiq.html"
+					onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white"
+					>Home</a
+				>
+				<a
+					href="#"
+					onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white"
+					>Get Started</a
+				>
+				<a
+					href="#create"
+					onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white"
+					>Create Account</a
+				>
+				<a
+					href="#generate"
+					onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white"
+					>Generate API Key</a
+				>
+				<a
+					href="#increase"
+					onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white"
+					>Increase Limit</a
+				>
+				<a
+					href="#use"
+					onclick="w3_close()"
+					class="w3-bar-item w3-button w3-hover-white"
+					>Use in InboxIQ</a
+				>
+
+			</div>
+		</nav>
+
+		<!-- Top menu on small screens -->
+		<header
+			class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding"
+		>
+			<a
+				href="javascript:void(0)"
+				class="w3-button w3-blue w3-margin-right"
+				onclick="w3_open()"
+				>☰</a
+			>
+			<span>InboxIQ</span>
 		</header>
 
-		<!-- Wrapper -->
-		<div id="wrapper">
-			<!-- Main -->
-			<section id="main" class="wrapper">
-				<div class="inner">
-					<h1 class="major">How to Get Your OpenAI API Key</h1>
-					<p>
-						To use InboxIQ, you'll need an OpenAI API key. Follow these steps to
-						obtain one:
-					</p>
-					<ol>
-						<li>
-							<h3>Create an OpenAI Account</h3>
-							<p>
-								If you don't already have an OpenAI account, go to
-								<a href="https://platform.openai.com/api-keys" target="_blank"
-									>openai.com</a
-								>
-								and sign up.
-							</p>
-						</li>
-						<li>
-							<h3>Log in to Your Account</h3>
-							<p>
-								Once you have an account, log in to the
-								<a href="https://platform.openai.com/api-keys" target="_blank"
-									>openai api key section here.</a
-								>
-								You may need to verify your phone if you just signed up.
-							</p>
-							<span class="image fit"
-								><img src="images/verifyPhone.png" alt="OpenAI login page"
-							/></span>
-						</li>
-						<li>
-							<h3>Create API Key</h3>
-							<p>
-								In the api dashboard, look for "+ Create new secret key" and
-								select that.
-							</p>
-							<span class="image"
-								><img
-									src="images/createKey.png"
-									alt="OpenAI dashboard API section"
-							/></span>
-						</li>
-						<li>
-							<h3>Optionally name the key and create</h3>
-							<p>Select "Create secret key" to generate a new API key.</p>
-							<span class="image fit"
-								><img src="images/key.png" alt="Create new API key button"
-							/></span>
-						</li>
-						<li>
-							<h3>Copy Your API Key</h3>
-							<p>
-								Your new API key will be displayed. Copy it immediately and
-								store it securely. You won't be able to see it again!
-							</p>
-							<span class="image fit"
-								><img src="images/savekey.png" alt="API key display"
-							/></span>
-						</li>
-						<li>
-							<h3>Increase limit</h3>
-							<p>
-								You will need to increase your limit to use the API. Click here:
-								<a
-									href="https://platform.openai.com/settings/organization/billing/overview"
-									target="_blank"
-									>increase limit</a
-								>
-								to get started.
-							</p>
-							<span class="image fit"
-								><img src="images/increase.png" alt="API key display"
-							/></span>
-						</li>
-						<li>
-							<h3>Proceed with purchase</h3>
-							<p>
-								Once you purchase a pay as you go plan, you can start to use
-								that API Key created. If you lost or forgot the key, you can
-								follow delete the previous one and make a new one.
-							</p>
-							<span class="image fit"
-								><img src="images/balance.png" alt="API key display"
-							/></span>
-						</li>
-						<li>
-							<h3>Enter the API Key in InboxIQ</h3>
-							<p>
-								Open the InboxIQ extension and paste your API key in the
-								designated field in the settings.
-							</p>
-						</li>
-					</ol>
-					<p>
-						Remember, your API key is like a password. Never share it publicly
-						or with anyone you don't trust. If you believe your key has been
-						compromised, return to the OpenAI dashboard and revoke it
-						immediately.
-					</p>
-					<p>
-						With your API key set up, you're ready to start using InboxIQ to
-						summarize your emails and boost your productivity!
-					</p>
-					<a href="inboxiq.html" class="button">Back Home</a>
-				</div>
-			</section>
+		<!-- Overlay effect when opening sidebar on small screens -->
+		<div
+			class="w3-overlay w3-hide-large"
+			onclick="w3_close()"
+			style="cursor: pointer"
+			title="close side menu"
+			id="myOverlay"
+		></div>
+
+		<!-- !PAGE CONTENT! -->
+		<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+			<!-- Header -->
+			<div class="w3-container" style="margin-top: 80px" id="showcase">
+				<h1 class="w3-jumbo"><b>How to Get Your OpenAI API Key</b></h1>
+				<h1 class="w3-xxxlarge w3-text-blue"><b>Step-by-Step Guide</b></h1>
+				<hr style="width: 50px; border: 5px solid blue" class="w3-round" />
+			</div>
+
+			<!-- Create Account Section -->
+			<div class="w3-container" id="create" style="margin-top: 75px">
+				<h1 class="w3-xxlarge w3-text-blue">
+					<b>1. Create an OpenAI Account</b>
+				</h1>
+				<hr style="width: 50px; border: 5px solid blue" class="w3-round" />
+				<p>If you don't already have an OpenAI account, follow these steps:</p>
+				<ol>
+					<li>
+						Go to
+						<a href="https://platform.openai.com/signup" target="_blank"
+							>OpenAI's signup page</a
+						>.
+					</li>
+					<li>Enter your email address and create a strong password.</li>
+					<li>
+						Verify your email address by clicking the link sent to your inbox.
+					</li>
+					<li>
+						Complete any additional verification steps (like phone verification)
+						if prompted.
+					</li>
+				</ol>
+				<img
+					src="images/verifyPhone.png"
+					style="width: 100%"
+					onclick="onClick(this)"
+					alt="Phone verification page"
+				/>
+			</div>
+
+			<!-- Generate API Key Section -->
+			<div class="w3-container" id="generate" style="margin-top: 75px">
+				<h1 class="w3-xxlarge w3-text-blue"><b>2. Generate Your API Key</b></h1>
+				<hr style="width: 50px; border: 5px solid blue" class="w3-round" />
+				<p>Once you're logged in, follow these steps to create your API key:</p>
+				<ol>
+					<li>
+						Navigate to the
+						<a href="https://platform.openai.com/api-keys" target="_blank"
+							>API keys section</a
+						>.
+					</li>
+					<li>Click on the "+ Create new secret key" button.</li>
+					<li>Optionally, give your key a name for easy identification.</li>
+					<li>Click "Create secret key" to generate the key.</li>
+					<li>
+						Copy your new API key immediately and store it securely. You won't
+						be able to see it again!
+					</li>
+				</ol>
+				<img
+					src="images/createKey.png"
+					style="width: 100%"
+					onclick="onClick(this)"
+					alt="API key creation page"
+				/>
+				<img
+					src="images/savekey.png"
+					style="width: 100%"
+					onclick="onClick(this)"
+					alt="API key display"
+				/>
+			</div>
+
+			<!-- Increase Limit Section -->
+			<div class="w3-container" id="increase" style="margin-top: 75px">
+				<h1 class="w3-xxlarge w3-text-blue">
+					<b>3. Increase Your Usage Limit</b>
+				</h1>
+				<hr style="width: 50px; border: 5px solid blue" class="w3-round" />
+				<p>
+					To use the API effectively, you'll need to increase your usage limit:
+				</p>
+				<ol>
+					<li>
+						Go to the
+						<a
+							href="https://platform.openai.com/account/billing/overview"
+							target="_blank"
+							>billing section</a
+						>
+						of your OpenAI account.
+					</li>
+					<li>
+						Click on "Set up paid account" or "Add payment method" if you
+						haven't already.
+					</li>
+					<li>
+						Follow the prompts to add a payment method and set up a
+						pay-as-you-go plan.
+					</li>
+					<li>
+						Once set up, you'll have a higher usage limit and can start using
+						your API key.
+					</li>
+				</ol>
+				<img
+					src="images/increase.png"
+					style="width: 100%"
+					onclick="onClick(this)"
+					alt="Billing page"
+				/>
+				<img
+					src="images/balance.png"
+					style="width: 100%"
+					onclick="onClick(this)"
+					alt="Account balance display"
+				/>
+			</div>
+
+			<!-- Use in InboxIQ Section -->
+			<div class="w3-container" id="use" style="margin-top: 75px">
+				<h1 class="w3-xxlarge w3-text-blue">
+					<b>4. Use Your API Key in InboxIQ</b>
+				</h1>
+				<hr style="width: 50px; border: 5px solid blue" class="w3-round" />
+				<p>Now that you have your API key, you can use it with InboxIQ:</p>
+				<ol>
+					<li>Open the InboxIQ extension in your browser.</li>
+					<li>
+						Navigate to the settings or options page within the extension.
+					</li>
+					<li>Look for a field labeled "OpenAI API Key" or similar.</li>
+					<li>Paste your API key into this field.</li>
+					<li>Save your settings.</li>
+				</ol>
+				<p>
+					<strong>Remember:</strong> Your API key is like a password. Never
+					share it publicly or with anyone you don't trust. If you believe your
+					key has been compromised, return to the OpenAI dashboard and revoke it
+					immediately, then create a new one.
+				</p>
+			</div>
+
+			<!-- End page content -->
 		</div>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<script>
+			// Script to open and close sidebar
+			function w3_open() {
+				document.getElementById("mySidebar").style.display = "block";
+				document.getElementById("myOverlay").style.display = "block";
+			}
+
+			function w3_close() {
+				document.getElementById("mySidebar").style.display = "none";
+				document.getElementById("myOverlay").style.display = "none";
+			}
+
+			// Modal Image Gallery
+			function onClick(element) {
+				document.getElementById("img01").src = element.src;
+				document.getElementById("modal01").style.display = "block";
+				var captionText = document.getElementById("caption");
+				captionText.innerHTML = element.alt;
+			}
+		</script>
 	</body>
 </html>

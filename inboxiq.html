@@ -1,281 +1,524 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>InboxIQ - By Ryan Bulcher</title>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, user-scalable=no"
+		<title>W3.CSS Template</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Poppins"
 		/>
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript
-			><link rel="stylesheet" href="assets/css/noscript.css"
-		/></noscript>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<style>
+			body,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5 {
+				font-family: "Poppins", sans-serif;
+			}
+			body {
+				font-size: 16px;
+			}
+			img {
+				margin-bottom: -8px;
+			}
+			.mySlides {
+				display: none;
+			}
+			.navbar {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 1000;
+				transition: top 0.3s;
+			}
+			.navbar a {
+				float: left;
+				display: block;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+			}
+			.navbar a:hover {
+				background-color: #ddd;
+				color: black;
+			}
+			.content {
+				padding-top: 64px;
+			}
+		</style>
 	</head>
-	<body class="is-preload">
-		<!-- Sidebar -->
-		<section id="sidebar">
-			<div class="inner">
-				<nav>
-					<ul>
-						<li><a href="#intro">Welcome</a></li>
-						<li><a href="#one">Who we are</a></li>
-						<li><a href="#two">How to get started</a></li>
-						<li><a href="#privacy-policy">Privacy Policy</a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>
+	<body class="w3-content w3-black" style="max-width: 1500px">
+		<!-- Navigation Bar -->
+		<div class="navbar w3-bar w3-blue">
+			<a href="#home" class="w3-bar-item w3-button">Home</a>
+			<a href="#why-use-it" class="w3-bar-item w3-button">Why Use It</a>
+			<a href="#features" class="w3-bar-item w3-button">Features</a>
+			<a href="#privacy-policy" class="w3-bar-item w3-button">Privacy Policy</a>
+			<a href="./howToGetApi.html" class="w3-bar-item w3-button"
+				>API Key Tutorial</a
+			>
+		</div>
+		<div id="home" class="content">
+			<!-- Header with Slideshow -->
+			<header class="w3-display-container w3-center">
+				<button
+					class="w3-button w3-block w3-green w3-hide-large w3-hide-medium"
+					onclick="document.getElementById('download').style.display='block'"
+				>
+					Download <i class="fa fa-android"></i> <i class="fa fa-apple"></i>
+					<i class="fa fa-windows"></i>
+				</button>
+				<div class="mySlides w3-animate-opacity">
+					<img
+						class="w3-image"
+						src="./images/example4.png"
+						alt="Image 1"
+						style="min-width: 500px"
+						width="1500"
+						height="1000"
+					/>
+					<div
+						class="w3-display-left w3-padding w3-hide-small"
+						style="width: 35%"
+					>
+						<div
+							class="w3-black w3-hover-opacity-off w3-padding-large w3-round-large"
+						>
+							<h1 class="w3-xlarge">Get out of Gmail faster with InboxIQ</h1>
+							<hr class="w3-opacity" />
+							<p>Get started for Free!</p>
+							<p>
+								<a
+									class="w3-button w3-block w3-blue w3-round"
+									href="https://chromewebstore.google.com/detail/inboxiq/glbdclhnkllflngooioakkcmhahkjffh?authuser=0&hl=en"
+									target="_blank"
+								>
+									Install <i class="fa fa-google"></i>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="mySlides w3-animate-opacity">
+					<img
+						class="w3-image"
+						src="./images/example4.png"
+						alt="Image 2"
+						style="min-width: 500px"
+						width="1500"
+						height="1000"
+					/>
+					<div
+						class="w3-display-left w3-padding w3-hide-small"
+						style="width: 35%"
+					>
+						<div
+							class="w3-black w3-hover-opacity-off w3-padding-large w3-round-large"
+						>
+							<h1 class="w3-xlarge">Fast and Secure</h1>
+							<hr class="w3-opacity" />
+							<p>Quickly summarize big emails and threads</p>
+							<p>
+								<a
+									class="w3-button w3-block w3-blue w3-round"
+									href="https://chromewebstore.google.com/detail/inboxiq/glbdclhnkllflngooioakkcmhahkjffh?authuser=0&hl=en"
+									target="_blank"
+								>
+									Install <i class="fa fa-google"></i>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="mySlides w3-animate-opacity">
+					<img
+						class="w3-image"
+						src="./images/example4.png"
+						alt="Image 3"
+						style="min-width: 500px"
+						width="1500"
+						height="1000"
+					/>
+					<div
+						class="w3-display-left w3-padding w3-hide-small"
+						style="width: 35%"
+					>
+						<div
+							class="w3-black w3-hover-opacity-off w3-padding-large w3-round-large"
+						>
+							<h1 class="w3-xlarge">Simple Design</h1>
+							<hr class="w3-opacity" />
+							<p>Easily track email summaries and ask follow up questions</p>
+							<p>
+								<a
+									class="w3-button w3-block w3-blue w3-round"
+									href="https://chromewebstore.google.com/detail/inboxiq/glbdclhnkllflngooioakkcmhahkjffh?authuser=0&hl=en"
+									target="_blank"
+								>
+									Install <i class="fa fa-google"></i>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<a
+					class="w3-button w3-black w3-display-right w3-margin-right w3-round w3-hide-small w3-hover-light-grey"
+					onclick="plusDivs(1)"
+					>Take Tour <i class="fa fa-angle-right"></i
+				></a>
+				<a
+					class="w3-button w3-block w3-black w3-hide-large w3-hide-medium"
+					onclick="plusDivs(1)"
+					>Take Tour <i class="fa fa-angle-right"></i
+				></a>
+			</header>
 
-		<!-- Wrapper -->
-		<div id="wrapper">
-			<!-- Intro -->
-			<section id="intro" class="wrapper style1 fullscreen fade-up">
-				<div class="inner">
-					<h1>InboxIQ</h1>
-					<p>
-						A Gmail Ai powered assistant and chat bot. Summarize emails with
-						security and efficiency.<br />
-						Powered by
+			<!-- The App Section -->
+			<div id="why-use-it" class="w3-padding-64 w3-white">
+				<div class="w3-row-padding">
+					<div class="w3-col l8 m6">
+						<h1 class="w3-jumbo"><b>InboxIQ</b></h1>
+						<h1 class="w3-xxxlarge w3-text-blue"><b>Why use it?</b></h1>
+						<p>
+							<span class="w3-xlarge">Take photos like a pro.</span> You should
+							buy this app because lorem ipsum consectetur adipiscing elit, sed
+							do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla pariatur.
+						</p>
 						<a
-							href="https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/"
+							class="w3-button w3-light-grey w3-padding-large w3-section w3-hide-small"
+							href="https://chromewebstore.google.com/detail/inboxiq/glbdclhnkllflngooioakkcmhahkjffh?authuser=0&hl=en"
 							target="_blank"
-							>GPT-4o Mini</a
-						>.
-					</p>
-					<ul class="actions">
-						<li><a href="#one" class="button scrolly">Learn more</a></li>
-					</ul>
-				</div>
-			</section>
-
-			<!-- One -->
-			<section id="one" class="wrapper style2 spotlights">
-				<section>
-					<div class="content">
-						<div class="inner">
-							<h2>
-								Have you ever been apart of a large email thread and gotten left
-								behind?
-							</h2>
-							<p>
-								Maybe you planned to read at some point, but now there are 20
-								messsages! Or there is long briefing for your next meeting, but
-								you don't have time to read it all. InboxIQ can help you with
-								that.
-							</p>
-						</div>
+						>
+							<i class="fa fa-download"></i> Install Extension
+						</a>
+						<p>
+							Available for
+							<i class="fa fa-google w3-text-nlack"></i>
+							<i class="fa fa-envelope w3-text-black"></i>
+						</p>
 					</div>
-				</section>
-				<section>
-					<div class="content">
-						<div class="inner">
-							<h2>Security a concern?</h2>
-							<p>
-								This chrome extension was built with security in mind. You
-								provide your own API key and the extension will never store your
-								emails. It will only summarize them and send the summary back to
-								you. We dont even have a server running! Its all done on your
-								device.
-							</p>
-							<ul class="actions">
-								<li><a href="#three">Privacy Policy</a></li>
-							</ul>
+					<div class="w3-col l4 m6">
+						<img
+							src="./images/icon.png"
+							class="w3-image w3-right w3-hide-small"
+							width="335"
+							height="471"
+						/>
+						<div class="w3-center w3-hide-large w3-hide-medium">
+							<a
+								class="w3-button w3-block w3-padding-large"
+								href="https://chromewebstore.google.com/detail/inboxiq/glbdclhnkllflngooioakkcmhahkjffh?authuser=0&hl=en"
+								target="_blank"
+							>
+								<i class="fa fa-download"></i> Install Extension
+							</a>
+							<img
+								src="./images/example4.png"
+								class="w3-image w3-margin-top"
+								width="335"
+								height="471"
+							/>
 						</div>
-					</div>
-				</section>
-				<section>
-					<div class="content">
-						<div class="inner">
-							<h2>Available for free!</h2>
-							<p>
-								While we do offer a Pro version for only $5 a month, the free
-								version gives you a lot of functionality. You can summarize up
-								to 5 emails a day and have access to the chat bot. The Pro
-								version gives you unlimited summaries and follow ups.
-							</p>
-						</div>
-					</div>
-				</section>
-			</section>
-
-			<!-- Two -->
-			<section id="two" class="wrapper style3 fade-up">
-				<div class="inner">
-					<h2>How does it work?</h2>
-					<p>
-						Two things are required from you; First it only works for Gmail
-						(Sorry outlook people, its a Google Chrome extension), Second you
-						will provide your own API key. This is easy to obtain and we have a
-						guide for you. Once you have the extension installed and the API key
-						in place, you can start summarizing emails.
-					</p>
-					<div class="features">
-						<section>
-							<span class="icon solid major fa-code"></span>
-							<h3>OpenAi API</h3>
-							<p>
-								You need an api key from OpenAi to use the extension. This is
-								for your own security! We dont want to store, process or even
-								look at your emails. OpenAi the creators of Chat GPT offer a
-								robust security policy and are an industry leader in privacy
-								with Ai. Once you obtain an api key from them, you can start
-								using the extension.
-							</p>
-							<ul class="actions">
-								<li>
-									<a href="howToGetApi.html" class="button">Learn more</a>
-								</li>
-							</ul>
-						</section>
-						<section>
-							<span class="icon solid major fa-lock"></span>
-							<h3>Security</h3>
-							<p>
-								We dont use any servers or databases. The extension stores all
-								your conversation data in the browser! So it never leaves your
-								device. This is done by utilizing the Chrome.storage API.
-							</p>
-						</section>
-						<section>
-							<span class="icon solid major fa-cog"></span>
-							<h3>In App Settings</h3>
-							<p>
-								InboxIQ offers multiple settings such as conversation lifetime
-								and the ability to show your unread email count right from the
-								extension bar!
-							</p>
-						</section>
-						<section>
-							<span class="icon solid major fa-desktop"></span>
-							<h3>Sync conversation data accross device</h3>
-							<p>
-								By using the Chrome.storage API, InboxIQ can sync your
-								conversation data accross devices. This is useful if you use
-								multiple devices or need to switch devices.
-							</p>
-						</section>
 					</div>
 				</div>
-			</section>
+			</div>
 
-			<!-- Three -->
-			<!-- Three -->
-			<section id="privacy-policy" class="wrapper style1 fade-up">
-				<div class="inner">
-					<h2>Privacy Policy</h2>
-					<h3>Introduction</h3>
-					<p>
-						Welcome to InboxIQ. This privacy policy outlines how we collect,
-						use, and protect your information when you use our Chrome extension.
-					</p>
+			<!-- Clarity Section -->
+			<div class="w3-padding-64 w3-light-grey">
+				<div class="w3-row-padding">
+					<div class="w3-col l4 m6">
+						<img
+							class="w3-image w3-round-large w3-hide-small w3-grayscale"
+							src="./images/serverless.png"
+							alt="App"
+							width="335"
+							height="471"
+						/>
+					</div>
+					<div class="w3-col l8 m6">
+						<h1 class="w3-jumbo"><b>You own your data.</b></h1>
+						<h1 class="w3-xxxlarge w3-text-red"><b>No servers!</b></h1>
+						<p>
+							<span class="w3-xlarge">Built for your data.</span> We run 0
+							servers. We store 0 of your data. You provide your own api key
+							from OpenAi for this reason. We dont act as a middle man at any
+							point. This is your email data and it remains on your device at
+							all times except when Openai is giving you the summary.
+						</p>
+					</div>
+				</div>
+			</div>
 
-					<h3>Information We Process</h3>
-					<p>InboxIQ accesses and processes the following information:</p>
-					<ul>
+			<!-- Features Section -->
+			<div
+				id="features"
+				class="w3-container w3-padding-64 w3-dark-grey w3-center"
+			>
+				<h1 class="w3-jumbo"><b>Features</b></h1>
+				<p>InboxIQ - Where Gmail, efficiency, and security all meet</p>
+
+				<div class="w3-row" style="margin-top: 64px">
+					<div class="w3-col s3">
+						<i class="fa fa-bolt w3-text-orange w3-jumbo"></i>
+						<p>Fast</p>
+					</div>
+					<div class="w3-col s3">
+						<i class="fa fa-line-chart w3-text-blue w3-jumbo"></i>
+						<p>Productive</p>
+					</div>
+					<div class="w3-col s3">
+						<i class="fa fa-lock w3-text-red w3-jumbo"></i>
+						<p>Safe</p>
+					</div>
+					<div class="w3-col s3">
+						<i class="fa fa-envelope-o w3-text-green w3-jumbo"></i>
+						<p>Gmail</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Pricing Section -->
+			<div class="w3-padding-64 w3-center w3-white">
+				<h1 class="w3-jumbo"><b>Pricing</b></h1>
+				<p class="w3-large">Choose a pricing plan that fits your needs.</p>
+				<div class="w3-row-padding" style="margin-top: 64px">
+					<div class="w3-half w3-section">
+						<ul class="w3-ul w3-card w3-hover-shadow">
+							<li class="w3-dark-grey w3-xlarge w3-padding-32">Free</li>
+							<li class="w3-padding-16"><b>5</b> Messages Daily</li>
+							<li class="w3-padding-16"><b>Reset</b> every 24 hours</li>
+							<li class="w3-padding-16"><b>Office hours</b> Support</li>
+							<li
+								class="w3-padding-16"
+								style="
+									display: flex;
+									align-items: baseline;
+									justify-content: center;
+								"
+							>
+								<h2 style="margin: 0; font-size: 2.5em">$0</h2>
+								<span
+									style="
+										font-size: 0.8em;
+										font-style: italic;
+										opacity: 0.7;
+										margin-left: 5px;
+									"
+									>/ month</span
+								>
+							</li>
+						</ul>
+					</div>
+					<div class="w3-half w3-section">
+						<ul class="w3-ul w3-card w3-hover-shadow">
+							<li class="w3-blue w3-xlarge w3-padding-32">Pro</li>
+							<li class="w3-padding-16"><b>Unlimited</b> Messages Daily</li>
+							<li class="w3-padding-16"><b>No Delay</b> On message reset</li>
+							<li class="w3-padding-16"><b>Expedited</b> Support</li>
+							<li
+								class="w3-padding-16"
+								style="
+									display: flex;
+									align-items: baseline;
+									justify-content: center;
+								"
+							>
+								<h2 style="margin: 0; font-size: 2.5em">$5</h2>
+								<span
+									style="
+										font-size: 0.8em;
+										font-style: italic;
+										opacity: 0.7;
+										margin-left: 5px;
+									"
+									>/ month</span
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<br />
+			</div>
+
+			<!-- Privacy Policy Section -->
+			<div id="privacy-policy" class="w3-padding-64 w3-light-grey">
+				<div class="w3-row-padding">
+					<div class="w3-col l12 m12">
+						<h1 class="w3-jumbo"><b>Privacy Policy</b></h1>
+						<h2 class="w3-xxlarge w3-text-blue"><b>Your Privacy Matters</b></h2>
+
+						<h3>Introduction</h3>
+						<p>
+							Welcome to InboxIQ. This privacy policy outlines how we collect,
+							use, and protect your information when you use our Chrome
+							extension.
+						</p>
+
+						<h3>Information We Process</h3>
+						<p>InboxIQ accesses and processes the following information:</p>
 						<li>Email content from your Gmail account</li>
 						<li>Email thread IDs</li>
-					</ul>
-					<p>
-						This information is processed within your browser and is also sent
-						to third-party AI services for generating summaries and responses.
-						It is never sent anywhere else to be viewed, processed, or stored by
-						us. This is extremely important to us and why we require users to
-						provide the API key, so the data processed is linked to your own LLM
-						account.
-					</p>
+						<p>
+							This information is processed within your browser and is also sent
+							to third-party AI services for generating summaries and responses.
+							It is never sent anywhere else to be viewed, processed, or stored
+							by us. This is extremely important to us and why we require users
+							to provide the API key, so the data processed is linked to your
+							own LLM account.
+						</p>
 
-					<h3>How We Use Information</h3>
-					<p>
-						The information accessed by InboxIQ is used solely for the purpose
-						of providing you with email summaries and facilitating conversations
-						about your emails. While initial processing occurs in your browser,
-						the data is sent to third-party AI services for generating
-						responses.
-					</p>
+						<h3>How We Use Information</h3>
+						<p>
+							The information accessed by InboxIQ is used solely for the purpose
+							of providing you with email summaries and facilitating
+							conversations about your emails. While initial processing occurs
+							in your browser, the data is sent to third-party AI services for
+							generating responses.
+						</p>
 
-					<h3>Data Transmission to Third Parties</h3>
-					<p>
-						InboxIQ sends email data to third-party AI services, such as OpenAI,
-						to generate summaries and responses. We require users to provide
-						their own API keys for these services. This practice ensures that:
-					</p>
-					<ul>
+						<h3>Data Transmission to Third Parties</h3>
+						<p>
+							InboxIQ sends email data to third-party AI services, such as
+							OpenAI, to generate summaries and responses. We require users to
+							provide their own API keys for these services. This practice
+							ensures that:
+						</p>
 						<li>You have control over which AI service processes your data</li>
 						<li>
 							The processing adheres to the privacy policies of the chosen AI
 							service
 						</li>
-					</ul>
-					<p>
-						For instance, OpenAI's privacy policy states that when you provide
-						your own API key, they do not store or use your data for training
-						purposes. We recommend reviewing the privacy policy of any AI
-						service you choose to use with InboxIQ.
-					</p>
+						<p>
+							For instance, OpenAI's privacy policy states that when you provide
+							your own API key, they do not store or use your data for training
+							purposes. We recommend reviewing the privacy policy of any AI
+							service you choose to use with InboxIQ.
+						</p>
 
-					<h3>Data Storage</h3>
-					<p>
-						InboxIQ uses Chrome's local storage to save conversation history and
-						settings. This data remains on your device and is not transmitted to
-						or stored on our servers.
-					</p>
+						<h3>Data Storage</h3>
+						<p>
+							InboxIQ uses Chrome's local storage to save conversation history
+							and settings. This data remains on your device and is not
+							transmitted to or stored on our servers.
+						</p>
 
-					<h3>Third-Party Services</h3>
-					<p>InboxIQ uses the following third-party services:</p>
-					<ul>
+						<h3>Third-Party Services</h3>
+						<p>InboxIQ uses the following third-party services:</p>
 						<li>Google OAuth 2.0 for authentication</li>
-						<li>
-							AI services (such as OpenAI) for generating email summaries and
-							responses
-						</li>
-					</ul>
-					<p>
-						While using these services, please be aware of their respective
-						privacy policies.
-					</p>
+						<li>OpenAi for generating email summaries and responses</li>
+						<p>
+							While using these services, please be aware of their respective
+							privacy policies.
+						</p>
 
-					<h3>Data Security</h3>
-					<p>
-						We take the security of your data seriously. All communication with
-						third-party APIs is done using secure HTTPS connections. Your API
-						keys for AI services are stored securely in Chrome's local storage
-						and are only used to make requests to the respective AI services.
-					</p>
+						<h3>Data Security</h3>
+						<p>
+							We take the security of your data seriously. All communication
+							with third-party APIs is done using secure HTTPS connections. Your
+							API keys for AI services are stored securely in Chrome's local
+							storage and are only used to make requests to the respective AI
+							services.
+						</p>
 
-					<h3>User Control</h3>
-					<p>
-						You have full control over the data stored by InboxIQ. You can
-						delete all stored conversations at any time using the 'Delete All'
-						function in the extension. You also control which AI service
-						processes your data by providing your own API key.
-					</p>
+						<h3>User Control</h3>
+						<p>
+							You have full control over the data stored by InboxIQ. You can
+							delete all stored conversations at any time using the 'Delete All'
+							function in the extension. You also control which AI service
+							processes your data by providing your own API key.
+						</p>
 
-					<h3>Changes to This Policy</h3>
-					<p>
-						We may update this privacy policy from time to time. We will notify
-						users of any changes by posting the new privacy policy on this page
-						and updating the extension.
-					</p>
+						<h3>Changes to This Policy</h3>
+						<p>
+							We may update this privacy policy from time to time. We will
+							notify users of any changes by posting the new privacy policy on
+							this page and updating the extension.
+						</p>
 
-					<h3>Contact Us</h3>
-					<p>
-						If you have any questions about this privacy policy, please contact
-						us at rjbulcher@gmail.com.
-					</p>
+						<h3>Contact Us</h3>
+						<p>
+							If you have any questions about this privacy policy, please
+							contact us at rjbulcher@gmail.com.
+						</p>
 
-					<p>Last updated: July 22, 2024</p>
+						<p class="w3-opacity">Last updated: July 22, 2024</p>
+					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<!-- Footer -->
+		<footer
+			class="w3-container w3-padding-32 w3-light-grey w3-center w3-xlarge"
+		>
+			<div class="w3-section">
+				<i class="fa fa-facebook-official w3-hover-opacity"></i>
+				<i class="fa fa-instagram w3-hover-opacity"></i>
+				<i class="fa fa-snapchat w3-hover-opacity"></i>
+				<i class="fa fa-pinterest-p w3-hover-opacity"></i>
+				<i class="fa fa-twitter w3-hover-opacity"></i>
+				<i class="fa fa-linkedin w3-hover-opacity"></i>
+			</div>
+		</footer>
+
+		<script>
+			// Slideshow
+			var slideIndex = 1;
+			showDivs(slideIndex);
+
+			function plusDivs(n) {
+				showDivs((slideIndex += n));
+			}
+
+			function showDivs(n) {
+				var i;
+				var x = document.getElementsByClassName("mySlides");
+				if (n > x.length) {
+					slideIndex = 1;
+				}
+				if (n < 1) {
+					slideIndex = x.length;
+				}
+				for (i = 0; i < x.length; i++) {
+					x[i].style.display = "none";
+				}
+				x[slideIndex - 1].style.display = "block";
+			}
+
+			// Smooth scrolling
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener("click", function (e) {
+					e.preventDefault();
+
+					document.querySelector(this.getAttribute("href")).scrollIntoView({
+						behavior: "smooth",
+					});
+				});
+			});
+
+			// Hide navbar on scroll down, show on scroll up
+			var prevScrollpos = window.pageYOffset;
+			window.onscroll = function () {
+				var currentScrollPos = window.pageYOffset;
+				if (prevScrollpos > currentScrollPos) {
+					document.querySelector(".navbar").style.top = "0";
+				} else {
+					document.querySelector(".navbar").style.top = "-50px";
+				}
+				prevScrollpos = currentScrollPos;
+			};
+		</script>
 	</body>
 </html>
