@@ -62,90 +62,121 @@
 			>
 		</div>
 		<div id="privacy-policy" class="content w3-padding-64 w3-light-grey">
-            <div class="w3-row-padding">
-                <div class="w3-col l12 m12">
-                    <h1 class="w3-jumbo"><b>Privacy Policy</b></h1>
-                    <h2 class="w3-xxlarge w3-text-blue"><b>Your Privacy is Our Priority</b></h2>
-        
-                    <h3>Introduction</h3>
-                    <p>
-                        Welcome to InboxIQ, a Chrome extension designed to enhance your email experience by providing summaries of your Gmail messages. This privacy policy outlines our commitment to protecting your information when you use our extension.
-                    </p>
-        
-                    <h3>Information We Process</h3>
-                    <p>InboxIQ accesses and processes the following information:</p>
-                    <ul>
-                        <li>Email content from your Gmail account</li>
-                        <li>Email thread IDs</li>
-                        <li>Basic metadata (such as sender and timestamp), if necessary for summarization</li>
-                    </ul>
-                    <p>
-                        This information is processed entirely within your browser and is sent directly to OpenAI for generating summaries. We do not store, view, or process your email data on any servers.
-                    </p>
-        
-                    <h3>How We Use Information</h3>
-                    <p>
-                        The information accessed by InboxIQ is used solely for providing you with email summaries. We act as a direct interface between your browser and OpenAI, with no intermediary storage or processing. Email data is retained in local storage only for as long as necessary to provide the summarization service.
-                    </p>
-        
-                    <h3>Data Transmission to Third Parties</h3>
-                    <p>
-                        InboxIQ sends email data directly to OpenAI to generate summaries. We require users to provide their own OpenAI API key, ensuring that:
-                    </p>
-                    <ul>
-                        <li>You have direct control over the AI service processing your data</li>
-                        <li>The processing adheres to OpenAI's privacy policy</li>
-                        <li>We never act as a middleman in data transmission</li>
-                    </ul>
-                    <p>
-                        We strongly recommend reviewing OpenAI's <a href="https://openai.com/privacy" target="_blank">privacy policy</a> to understand how they handle your data when you use your API key.
-                    </p>
-        
-                    <h3>Data Storage</h3>
-                    <p>
-                        InboxIQ uses Chrome's local storage to save conversation history, email summaries, and settings. This data remains on your device and is never transmitted to or stored on our servers. Your OpenAI API key is also stored securely on your device and is protected by browser encryption mechanisms.
-                    </p>
-        
-                    <h3>Third-Party Services</h3>
-                    <p>InboxIQ uses the following third-party services:</p>
-                    <ul>
-                        <li><a href="https://developers.google.com/identity/protocols/oauth2" target="_blank">Google OAuth 2.0</a> for Gmail authentication</li>
-                        <li><a href="https://openai.com/privacy" target="_blank">OpenAI</a> for generating email summaries</li>
-                        <li><a href="https://stripe.com/privacy" target="_blank">Stripe</a> for handling Pro version subscriptions (if applicable)</li>
-                    </ul>
-                    <p>
-                        Please review the respective privacy policies of these services for detailed information on their data handling practices.
-                    </p>
-        
-                    <h3>Pro Version Subscription</h3>
-                    <p>
-                        If you subscribe to the Pro version of InboxIQ, an account is created for you with Stripe, a world-renowned secure payment processor. Stripe handles all authentication and payment processing. We do not store or have access to your payment information.
-                    </p>
-        
-                    <h3>Data Security</h3>
-                    <p>
-                        We prioritize the security of your data. All communication with OpenAI is conducted using secure HTTPS connections. Your OpenAI API key is stored securely in Chrome's local storage and is only used to make direct requests to OpenAI.
-                    </p>
-        
-                    <h3>User Control</h3>
-                    <p>
-                        You have full control over your data. You can delete all stored conversations and summaries at any time using the 'Delete All' function in the extension settings. You control which AI service processes your data by providing your own OpenAI API key, which can be updated at any time.
-                    </p>
-        
-                    <h3>Changes to This Policy</h3>
-                    <p>
-                        We may update this privacy policy from time to time. We will notify users of any significant changes by posting the new privacy policy on this page and updating the extension. Please review this page periodically for any updates.
-                    </p>
-        
-                    <h3>Contact Us</h3>
-                    <p>
-                        If you have any questions about this privacy policy, please contact us at <a href="mailto:rjbulcher@gmail.com">rjbulcher@gmail.com</a>.
-                    </p>
-        
-                    <p class="w3-opacity">Last updated: July 29, 2024</p>
-                </div>
-            </div>
-        </div>
+			<div class="w3-row-padding">
+				<div class="w3-col l12 m12">
+					<h1 class="w3-jumbo"><b>Privacy Policy</b></h1>
+					<h2 class="w3-xxlarge w3-text-blue"><b>Your Privacy is Our Priority</b></h2>
+		
+					<h3>Introduction</h3>
+					<p>
+						Welcome to InboxIQ, a Chrome extension designed to enhance your email experience by providing summaries of your Gmail messages. This privacy policy outlines our commitment to protecting your information when you use our extension.
+					</p>
+		
+					<h3>Google User Data and Limited Use Disclosure</h3>
+					<p>
+						InboxIQ accesses Google user data, specifically your Gmail content, to provide email summarization services. We comply with Google's Limited Use requirements in our handling of this data. This means:
+					</p>
+					<ul>
+						<li>We only request access to the data necessary for our service to function.</li>
+						<li>We do not sell your Google user data.</li>
+						<li>We do not use your Google user data for advertising purposes.</li>
+						<li>We do not share your Google user data with third parties except for the explicit purpose of providing our service (i.e., sending to OpenAI for summarization).</li>
+						<li>We provide a way for you to revoke our access to your data.</li>
+					</ul>
+		
+					<h3>Information We Process</h3>
+					<p>InboxIQ accesses and processes the following information:</p>
+					<ul>
+						<li>Email content from your Gmail account</li>
+						<li>Email thread IDs</li>
+						<li>Basic metadata (such as sender and timestamp), if necessary for summarization</li>
+					</ul>
+					<p>
+						This information is processed entirely within your browser and is sent directly to OpenAI for generating summaries. We do not store, view, or process your email data on any servers.
+					</p>
+		
+					<h3>How We Use Information</h3>
+					<p>
+						The information accessed by InboxIQ is used solely for providing you with email summaries. We act as a direct interface between your browser and OpenAI, with no intermediary storage or processing. Email data is retained in local storage only for as long as necessary to provide the summarization service.
+					</p>
+		
+					<h3>Data Transmission to Third Parties</h3>
+					<p>
+						InboxIQ sends email data directly to OpenAI to generate summaries. We require users to provide their own OpenAI API key, ensuring that:
+					</p>
+					<ul>
+						<li>You have direct control over the AI service processing your data</li>
+						<li>The processing adheres to OpenAI's privacy policy</li>
+						<li>We never act as a middleman in data transmission</li>
+					</ul>
+					<p>
+						We strongly recommend reviewing OpenAI's <a href="https://openai.com/privacy" target="_blank">privacy policy</a> to understand how they handle your data when you use your API key.
+					</p>
+		
+					<h3>Data Storage</h3>
+					<p>
+						InboxIQ uses Chrome's local storage to save conversation history, email summaries, and settings. This data remains on your device and is never transmitted to or stored on our servers. Your OpenAI API key is also stored securely on your device and is protected by browser encryption mechanisms.
+					</p>
+		
+					<h3>Third-Party Services</h3>
+					<p>InboxIQ uses the following third-party services:</p>
+					<ul>
+						<li><a href="https://developers.google.com/identity/protocols/oauth2" target="_blank">Google OAuth 2.0</a> for Gmail authentication</li>
+						<li><a href="https://openai.com/privacy" target="_blank">OpenAI</a> for generating email summaries</li>
+						<li><a href="https://stripe.com/privacy" target="_blank">Stripe</a> for handling Pro version subscriptions (if applicable)</li>
+					</ul>
+					<p>
+						Please review the respective privacy policies of these services for detailed information on their data handling practices.
+					</p>
+		
+					<h3>Pro Version Subscription</h3>
+					<p>
+						If you subscribe to the Pro version of InboxIQ, an account is created for you with Stripe, a world-renowned secure payment processor. Stripe handles all authentication and payment processing. We do not store or have access to your payment information.
+					</p>
+		
+					<h3>Data Security</h3>
+					<p>
+						We prioritize the security of your data. All communication with OpenAI is conducted using secure HTTPS connections. Your OpenAI API key is stored securely in Chrome's local storage and is only used to make direct requests to OpenAI.
+					</p>
+		
+					<h3>User Control and Data Access</h3>
+					<p>
+						You have full control over your data. You can:
+					</p>
+					<ul>
+						<li>Delete all stored conversations and summaries at any time using the 'Delete All' function in the extension settings.</li>
+						<li>Control which AI service processes your data by providing your own OpenAI API key, which can be updated at any time.</li>
+						<li>Revoke InboxIQ's access to your Google account at any time by visiting <a href="https://myaccount.google.com/permissions" target="_blank">Google Account Permissions</a>.</li>
+						<li>Request a copy of your data or ask questions about our data practices by contacting us at <a href="mailto:rjbulcher@gmail.com">rjbulcher@gmail.com</a>.</li>
+					</ul>
+		
+					<h3>In-Product Privacy Notifications</h3>
+					<p>
+						InboxIQ provides clear, in-product privacy notifications within the Chrome extension interface. These notifications are easily accessible and inform you about:
+					</p>
+					<ul>
+						<li>What data is being accessed and processed</li>
+						<li>How to control your data</li>
+						<li>How to access this full privacy policy</li>
+					</ul>
+					<p>
+						You can access these notifications at any time by clicking the "Privacy Info" button in the extension interface.
+					</p>
+		
+					<h3>Changes to This Policy</h3>
+					<p>
+						We may update this privacy policy from time to time. We will notify users of any significant changes by posting the new privacy policy on this page and updating the extension. We review this policy at least annually to ensure it remains current and accurate.
+					</p>
+		
+					<h3>Contact Us</h3>
+					<p>
+						If you have any questions about this privacy policy, please contact us at <a href="mailto:rjbulcher@gmail.com">rjbulcher@gmail.com</a>.
+					</p>
+		
+					<p class="w3-opacity">Last updated: August 2, 2024</p>
+				</div>
+			</div>
+		</div>
         
 		</div>
 		<script>
