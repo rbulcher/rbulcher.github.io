@@ -1,6 +1,7 @@
 {
-	"short_name": "Ryan Bulcher portfolio",
-	"name": "Explore Ryan Bulcher's portfolio",
+	"short_name": "Ryan Bulcher",
+	"name": "Ryan Bulcher | Software Engineer & Developer",
+	"description": "Software Engineer & Developer with expertise in interactive experiences and modern web technologies.",
 	"icons": [
 		{
 			"src": "favicon.ico",
