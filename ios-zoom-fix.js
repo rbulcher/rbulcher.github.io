@@ -22,27 +22,18 @@
 			);
 		});
 
-		// Prevent pinch-zoom on touchmove -- MODIFIED TO IGNORE CANVAS
+		// Prevent pinch-zoom on touchmove
 		document.addEventListener(
 			"touchmove",
 			function (e) {
-				const canvasElement = document.querySelector("canvas");
-				if (canvasElement && canvasElement.contains(e.target)) {
-					// If touchmove is on the canvas or its child, do nothing.
-					// Let OrbitControls handle this.
-					return;
+				if (e.touches && e.touches.length > 1) {
+					e.preventDefault();
 				}
 
-				// The following lines are currently commented out.
-				// If they were active, they would now only apply to touchmove
-				// events occurring outside the canvas.
-				// if (e.touches && e.touches.length > 1) {
-				// 	e.preventDefault();
-				// }
-				// // Also check for scale property
-				// if (e.scale !== undefined && e.scale !== 1) {
-				// 	e.preventDefault();
-				// }
+				// Also check for scale property
+				if (e.scale !== undefined && e.scale !== 1) {
+					e.preventDefault();
+				}
 			},
 			{ passive: false }
 		);
@@ -54,57 +45,51 @@
 			function (e) {
 				const now = Date.now();
 				if (now - lastTouchEnd <= 300) {
-					// Check if the target is the canvas or within it
-					const canvasElement = document.querySelector("canvas");
-					if (canvasElement && canvasElement.contains(e.target)) {
-						// If double tap is on canvas, let OrbitControls handle it (or do nothing if not configured)
-					} else {
-						e.preventDefault(); // Prevent double-tap zoom only outside canvas
-					}
+					e.preventDefault();
 				}
 				lastTouchEnd = now;
 			},
 			{ passive: false }
 		);
 
-		// Disable Safari's native gestures - critical for iOS -- COMMENTING OUT
-		// document.addEventListener(
-		// 	"gesturestart",
-		// 	function (e) {
-		// 		e.preventDefault();
-		// 		return false;
-		// 	},
-		// 	{ passive: false }
-		// );
+		// Disable Safari's native gestures - critical for iOS
+		document.addEventListener(
+			"gesturestart",
+			function (e) {
+				e.preventDefault();
+				return false;
+			},
+			{ passive: false }
+		);
 
-		// document.addEventListener(
-		// 	"gesturechange",
-		// 	function (e) {
-		// 		e.preventDefault();
-		// 		return false;
-		// 	},
-		// 	{ passive: false }
-		// );
+		document.addEventListener(
+			"gesturechange",
+			function (e) {
+				e.preventDefault();
+				return false;
+			},
+			{ passive: false }
+		);
 
-		// document.addEventListener(
-		// 	"gestureend",
-		// 	function (e) {
-		// 		e.preventDefault();
-		// 		return false;
-		// 	},
-		// 	{ passive: false }
-		// );
+		document.addEventListener(
+			"gestureend",
+			function (e) {
+				e.preventDefault();
+				return false;
+			},
+			{ passive: false }
+		);
 
-		// Additional zoom prevention for older iOS -- COMMENTING OUT
-		// document.addEventListener(
-		// 	"touchstart",
-		// 	function (e) {
-		// 		if (e.touches.length > 1) {
-		// 			e.preventDefault();
-		// 		}
-		// 	},
-		// 	{ passive: false }
-		// );
+		// Additional zoom prevention for older iOS
+		document.addEventListener(
+			"touchstart",
+			function (e) {
+				if (e.touches.length > 1) {
+					e.preventDefault();
+				}
+			},
+			{ passive: false }
+		);
 
 		// Add additional class to body for CSS targeting
 		document.addEventListener("DOMContentLoaded", function () {
