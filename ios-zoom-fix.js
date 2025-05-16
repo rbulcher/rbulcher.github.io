@@ -22,10 +22,20 @@
 			);
 		});
 
-		// Prevent pinch-zoom on touchmove -- COMMENTING OUT PREVENTIONS
+		// Prevent pinch-zoom on touchmove -- MODIFIED TO IGNORE CANVAS
 		document.addEventListener(
 			"touchmove",
 			function (e) {
+				const canvasElement = document.querySelector("canvas");
+				if (canvasElement && canvasElement.contains(e.target)) {
+					// If touchmove is on the canvas or its child, do nothing.
+					// Let OrbitControls handle this.
+					return;
+				}
+
+				// The following lines are currently commented out.
+				// If they were active, they would now only apply to touchmove
+				// events occurring outside the canvas.
 				// if (e.touches && e.touches.length > 1) {
 				// 	e.preventDefault();
 				// }
