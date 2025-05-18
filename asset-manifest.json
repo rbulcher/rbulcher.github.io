@@ -1,25 +1,28 @@
 {
   "files": {
     "main.css": "/static/css/main.c3fe7a82.css",
-    "main.js": "/static/js/main.9de85800.js",
+    "main.js": "/static/js/main.3a9fb040.js",
     "static/js/453.54961dfe.chunk.js": "/static/js/453.54961dfe.chunk.js",
+    "static/media/shuffle.png": "/static/media/shuffle.67652cb549ec8ed69da2.png",
     "static/media/github.png": "/static/media/github.ef3ecd96459cc67fa761.png",
     "static/media/TagExplorer.png": "/static/media/TagExplorer.832c8347e40379bc13c6.png",
     "static/media/CoMo.png": "/static/media/CoMo.135915f8eba2eb8f60cb.png",
+    "static/media/infotools.png": "/static/media/infotools.9a40ccfd2fdc5db4a5f6.png",
     "static/media/planetfitness.png": "/static/media/planetfitness.71348890557973515837.png",
     "static/media/coty.png": "/static/media/coty.92b295bbd3e9f992dd40.png",
     "static/media/TaylorMade.png": "/static/media/TaylorMade.2b212ed3d79adeed7365.png",
     "static/media/3dPrintCo.png": "/static/media/3dPrintCo.17d104e37903206690bc.png",
+    "static/media/youtube.png": "/static/media/youtube.1a8315faacdaca3f71d2.png",
     "static/media/onewheel.png": "/static/media/onewheel.a6c11f34d984f25e3306.png",
     "static/media/tiktok.png": "/static/media/tiktok.fec5fba19e3f69650fba.png",
     "static/media/linkedin.png": "/static/media/linkedin.fe4dbe4730a4a1fd82cf.png",
     "index.html": "/index.html",
     "main.c3fe7a82.css.map": "/static/css/main.c3fe7a82.css.map",
-    "main.9de85800.js.map": "/static/js/main.9de85800.js.map",
+    "main.3a9fb040.js.map": "/static/js/main.3a9fb040.js.map",
     "453.54961dfe.chunk.js.map": "/static/js/453.54961dfe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c3fe7a82.css",
-    "static/js/main.9de85800.js"
+    "static/js/main.3a9fb040.js"
   ]
 }
