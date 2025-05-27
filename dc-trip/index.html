@@ -1,720 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Washington D.C. Itinerary Explorer</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		<!-- Visualization & Content Choices: 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washington D.C. Itinerary Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices: 
         - Itinerary Data (Schedule, Activities, Meals, Notes): Report Info -> Daily schedule items. Goal -> Inform, Organize. Viz/Presentation -> Structured HTML lists and cards within tabbed sections. Interaction -> Tab selection to view specific day. Justification -> Clear, chronological presentation. Library/Method -> HTML/CSS/Tailwind + JS for tab functionality.
         - Booking Reminders: Report Info -> Urgent booking notes. Goal -> Alert, Inform. Viz/Presentation -> Visually highlighted text blocks. Interaction -> None. Justification -> Highlighting critical action items. Library/Method -> HTML/CSS/Tailwind.
         - Activity Count Chart: Report Info -> Number of main activities per day (derived: Fri-1, Sat-3, Sun-3). Goal -> Compare daily activity load. Viz/Presentation -> Vertical Bar Chart. Interaction -> None. Justification -> Quick visual summary. Library/Method -> Chart.js on Canvas.
         - Weather Data: Report Info -> User-provided weather image. Goal -> Inform. Viz/Presentation -> Structured HTML cards for each day's forecast. Interaction -> None. Justification -> Provides essential travel planning information. Library/Method -> HTML/CSS/Tailwind.
         - Map Embeds: Report Info -> User-provided iframe code for restaurant locations. Goal -> Visualize location. Viz/Presentation -> Embedded iframes. Interaction -> Standard map interaction if iframe loads. Justification -> User request. Library/Method -> HTML iframe.
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-		<style>
-			body {
-				font-family: "Inter", sans-serif;
-				background-color: #f9fafb; /* Tailwind gray-50 */
-			}
-			.tab-button {
-				transition: all 0.3s ease;
-			}
-			.tab-button.active {
-				border-color: #0d9488; /* Tailwind teal-600 */
-				color: #0d9488; /* Tailwind teal-600 */
-				background-color: #ccfbf1; /* Tailwind teal-100 */
-			}
-			.content-section {
-				display: none;
-			}
-			.content-section.active {
-				display: block;
-			}
-			.activity-card,
-			.weather-card {
-				background-color: #ffffff;
-				border-left-width: 4px;
-			}
-			.activity-card h3,
-			.weather-card h3 {
-				color: #115e59; /* Tailwind teal-800 */
-			}
-			.booking-urgent {
-				background-color: #fef9c3; /* Tailwind yellow-100 */
-				border-left-color: #facc15; /* Tailwind yellow-400 */
-				padding: 0.75rem;
-				border-radius: 0.375rem;
-				margin-top: 0.5rem;
-				margin-bottom: 0.5rem;
-			}
-			.chart-container {
-				position: relative;
-				width: 100%;
-				max-width: 600px;
-				margin-left: auto;
-				margin-right: auto;
-				height: 300px;
-				max-height: 400px;
-			}
-			.weather-icon {
-				font-size: 2.5rem; /* 40px */
-				line-height: 1;
-			}
-			.address-text {
-				font-style: italic;
-				color: #4b5563; /* Tailwind gray-600 */
-				font-size: 0.875rem; /* text-sm */
-			}
-			.map-container {
-				width: 100%;
-				max-width: 560px; /* Slightly less than card for padding */
-				height: 300px;
-				margin-top: 0.75rem; /* my-3 */
-				border-radius: 0.375rem; /* rounded-md */
-				overflow: hidden; /* To ensure border-radius applies to iframe */
-			}
-			.map-container iframe {
-				width: 100%;
-				height: 100%;
-				border: 0;
-			}
-			@media (min-width: 768px) {
-				/* md breakpoint */
-				.chart-container {
-					height: 350px;
-				}
-				.map-container {
-					height: 350px;
-				}
-			}
-			@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-		</style>
-	</head>
-	<body class="text-gray-800">
-		<header class="bg-teal-700 text-white py-6 shadow-md">
-			<div class="container mx-auto px-4">
-				<h1 class="text-3xl font-bold text-center">
-					Washington D.C. Itinerary Explorer
-				</h1>
-				<p class="text-center text-teal-100 text-sm mt-1">
-					Your interactive guide for May 30th - June 1st, 2025
-				</p>
-			</div>
-		</header>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Tailwind gray-50 */
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            border-color: #0d9488; /* Tailwind teal-600 */
+            color: #0d9488; /* Tailwind teal-600 */
+            background-color: #ccfbf1; /* Tailwind teal-100 */
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .activity-card, .weather-card {
+            background-color: #ffffff;
+            border-left-width: 4px;
+        }
+        .activity-card h3, .weather-card h3 {
+            color: #115e59; /* Tailwind teal-800 */
+        }
+        .booking-urgent {
+            background-color: #fef9c3; /* Tailwind yellow-100 */
+            border-left-color: #facc15; /* Tailwind yellow-400 */
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .booking-confirmed {
+            background-color: #dcfce7; /* Tailwind green-100 */
+            border-left-color: #22c55e; /* Tailwind green-500 */
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+         .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; 
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; 
+            max-height: 400px; 
+        }
+        .weather-icon {
+            font-size: 2.5rem; /* 40px */
+            line-height: 1;
+        }
+        .address-text {
+            font-style: italic;
+            color: #4b5563; /* Tailwind gray-600 */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .map-container {
+            width: 100%;
+            max-width: 560px; /* Slightly less than card for padding */
+            height: 300px; 
+            margin-top: 0.75rem; /* my-3 */
+            border-radius: 0.375rem; /* rounded-md */
+            overflow: hidden; /* To ensure border-radius applies to iframe */
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .chart-container {
+                height: 350px;
+            }
+            .map-container {
+                height: 350px;
+            }
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    </style>
+</head>
+<body class="text-gray-800">
 
-		<nav class="bg-white shadow-sm sticky top-0 z-50">
-			<div class="container mx-auto px-4">
-				<div
-					class="flex justify-center space-x-1 sm:space-x-2 py-3 border-b border-gray-200 overflow-x-auto"
-				>
-					<button
-						data-tab="overview"
-						class="tab-button active text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap"
-					>
-						Overview
-					</button>
-					<button
-						data-tab="friday"
-						class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap"
-					>
-						Friday
-					</button>
-					<button
-						data-tab="saturday"
-						class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap"
-					>
-						Saturday
-					</button>
-					<button
-						data-tab="sunday"
-						class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap"
-					>
-						Sunday
-					</button>
-					<button
-						data-tab="weather"
-						class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap"
-					>
-						Weather
-					</button>
-				</div>
-			</div>
-		</nav>
+    <header class="bg-teal-700 text-white py-6 shadow-md">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-center">Washington D.C. Itinerary Explorer</h1>
+            <p class="text-center text-teal-100 text-sm mt-1">Your interactive guide for May 30th - June 1st, 2025</p>
+        </div>
+    </header>
 
-		<main class="container mx-auto p-4 sm:p-6">
-			<section id="overview" class="content-section active">
-				<div class="bg-white p-6 rounded-lg shadow-lg">
-					<h2 class="text-2xl font-semibold text-teal-700 mb-4">
-						Trip Overview & Activity Load
-					</h2>
-					<p class="text-gray-600 mb-6">
-						This chart provides a quick look at the number of main planned
-						activities for each day of your trip. Use the tabs above to explore
-						the detailed itinerary for each day and check the weather forecast.
-					</p>
-					<div class="chart-container">
-						<canvas id="activityChart"></canvas>
-					</div>
-					<div class="mt-6 p-4 bg-teal-50 border border-teal-200 rounded-lg">
-						<h3 class="text-lg font-semibold text-teal-700 mb-2">
-							Important Booking Reminders (URGENT!):
-						</h3>
-						<ul class="list-disc list-inside text-gray-700 space-y-1">
-							<li>
-								<strong>National Archives Museum:</strong> Timed entry passes
-								for May 31st are critical. Check availability immediately.
-							</li>
-							<li>
-								<strong>Smithsonian National Air and Space Museum:</strong>
-								Attempt to get next-day passes on Saturday, May 31st at 8:30 AM
-								ET for a Sunday visit.
-							</li>
-							<li>
-								<strong>Other Museums (Holocaust, NMAAHC):</strong> If
-								interested, try for same-day passes online early each morning.
-							</li>
-							<li>
-								<strong>Nice Dinner Reservations (Saturday):</strong> Confirmed:
-								Founding Farmers DC.
-							</li>
-							<li>
-								<strong>Dinner Reservation (Sunday):</strong> Confirmed: RPM
-								Italian - DC.
-							</li>
-						</ul>
-					</div>
-				</div>
-			</section>
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center space-x-1 sm:space-x-2 py-3 border-b border-gray-200 overflow-x-auto">
+                <button data-tab="overview" class="tab-button active text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap">Overview</button>
+                <button data-tab="friday" class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap">Friday</button>
+                <button data-tab="saturday" class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap">Saturday</button>
+                <button data-tab="sunday" class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap">Sunday</button>
+                <button data-tab="weather" class="tab-button text-xs sm:text-sm font-medium py-2 px-2 sm:px-4 border-b-2 border-transparent hover:border-teal-500 hover:text-teal-600 rounded-t-md whitespace-nowrap">Weather</button>
+            </div>
+        </div>
+    </nav>
 
-			<section id="friday" class="content-section">
-				<div class="bg-white p-6 rounded-lg shadow-lg">
-					<h2 class="text-2xl font-semibold text-teal-700 mb-1">
-						Friday, May 30th: Arrival & Evening Exploration
-					</h2>
-					<p class="text-gray-600 mb-6">
-						Welcome to D.C.! Settle in and enjoy your first evening. Be prepared
-						for rain and potential thunderstorms.
-					</p>
+    <main class="container mx-auto p-4 sm:p-6">
+        <section id="overview" class="content-section active">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-teal-700 mb-4">Trip Overview & Activity Load</h2>
+                <p class="text-gray-600 mb-6">This chart provides a quick look at the number of main planned activities for each day of your trip. Use the tabs above to explore the detailed itinerary for each day and check the weather forecast.</p>
+                <div class="chart-container">
+                    <canvas id="activityChart"></canvas>
+                </div>
+                <div class="mt-6 p-4 bg-teal-50 border border-teal-200 rounded-lg">
+                    <h3 class="text-lg font-semibold text-teal-700 mb-2">Important Booking Reminders (URGENT!):</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li><strong>National Archives Museum:</strong> Timed entry passes for May 31st are critical. Check availability immediately.</li>
+                        <li><strong>Smithsonian National Air and Space Museum:</strong> <span class="font-semibold text-green-700">Tickets Confirmed!</span> Sun, Jun 1, 10:00 AM.</li>
+                        <li><strong>Other Museums (Holocaust, NMAAHC):</strong> If interested, try for same-day passes online early each morning.</li>
+                        <li><strong>Nice Dinner Reservations (Saturday):</strong> Confirmed: Founding Farmers DC.</li>
+                        <li><strong>Dinner Reservation (Sunday):</strong> Confirmed: RPM Italian - DC.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-					<div class="space-y-6">
-						<div class="activity-card border-teal-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">Evening (Flexible)</h3>
-							<p class="text-gray-700">
-								Arrive in D.C., check into your hotel near Mt. Vernon Convention
-								Center.
-							</p>
-						</div>
+        <section id="friday" class="content-section">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-teal-700 mb-1">Friday, May 30th: Arrival & Evening Exploration</h2>
+                <p class="text-gray-600 mb-6">Welcome to D.C.! Settle in and enjoy your first evening. Be prepared for rain and potential thunderstorms.</p>
+                
+                <div class="space-y-6">
+                    <div class="activity-card border-teal-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">Evening (Flexible)</h3>
+                        <p class="text-gray-700">Arrive in D.C., check into your hotel near Mt. Vernon Convention Center.</p>
+                    </div>
 
-						<div class="activity-card border-teal-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								8:00 PM - 9:30 PM: Dinner
-							</h3>
-							<p class="text-gray-700 font-medium mb-1">
-								Options (if Saturday/Sunday reservations change):
-							</p>
-							<ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
-								<li>
-									<strong>Near Hotel/Penn Quarter (Casual & Good):</strong>
-									<ul
-										class="list-disc list-inside text-gray-600 space-y-1 pl-6"
-									>
-										<li>The Dabney Cellar (Blagden Alley - walkable)</li>
-										<li>Unconventional Diner (Convention Center area)</li>
-										<li>
-											Yardbird Southern Table & Bar (Convention Center area)
-										</li>
-									</ul>
-								</li>
-								<li>
-									<strong>Classic D.C. (Short ride/longer walk):</strong>
-									<ul
-										class="list-disc list-inside text-gray-600 space-y-1 pl-6"
-									>
-										<li>Old Ebbitt Grill (Near White House)</li>
-										<li>Carmine's (Penn Quarter)</li>
-									</ul>
-								</li>
-							</ul>
-						</div>
+                    <div class="activity-card border-teal-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">8:00 PM - 9:30 PM: Dinner</h3>
+                        <p class="text-gray-700 font-medium mb-1">Options (if Saturday/Sunday reservations change):</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                            <li><strong>Near Hotel/Penn Quarter (Casual & Good):</strong>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1 pl-6">
+                                    <li>The Dabney Cellar (Blagden Alley - walkable)</li>
+                                    <li>Unconventional Diner (Convention Center area)</li>
+                                    <li>Yardbird Southern Table & Bar (Convention Center area)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Classic D.C. (Short ride/longer walk):</strong>
+                                <ul class="list-disc list-inside text-gray-600 space-y-1 pl-6">
+                                    <li>Old Ebbitt Grill (Near White House)</li>
+                                    <li>Carmine's (Penn Quarter)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
 
-						<div class="activity-card border-teal-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">Post-Dinner (Optional)</h3>
-							<p class="text-gray-700">
-								A walk through the Penn Quarter/Chinatown area, or if feeling
-								energetic, a slightly longer stroll towards the National Mall to
-								see some of the monuments lit up from a distance. (Weather
-								permitting - high chance of rain).
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
+                    <div class="activity-card border-teal-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">Post-Dinner (Optional)</h3>
+                        <p class="text-gray-700">A walk through the Penn Quarter/Chinatown area, or if feeling energetic, a slightly longer stroll towards the National Mall to see some of the monuments lit up from a distance. (Weather permitting - high chance of rain).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-			<section id="saturday" class="content-section">
-				<div class="bg-white p-6 rounded-lg shadow-lg">
-					<h2 class="text-2xl font-semibold text-teal-700 mb-1">
-						Saturday, May 31st: Deep Dive into American History & A Special
-						Evening
-					</h2>
-					<p class="text-gray-600 mb-6">
-						A full day exploring significant historical sites, culminating in a
-						memorable dinner. Be prepared for scattered showers and
-						thunderstorms.
-					</p>
-					<div class="booking-urgent">
-						<p class="font-semibold text-yellow-700">
-							URGENT: Attempt to book timed entry for National Archives Museum
-							ASAP! For Air & Space Museum, try for next-day passes tomorrow
-							morning (8:30 AM ET).
-						</p>
-					</div>
-					<div class="space-y-6">
-						<div class="activity-card border-blue-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								8:30 AM - 9:30 AM: Breakfast & Coffee
-							</h3>
-							<p class="text-gray-700 font-medium mb-1">
-								Options (Near Hotel):
-							</p>
-							<ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
-								<li>Tatte Bakery & Cafe</li>
-								<li>A Baked Joint (Mt. Vernon Triangle)</li>
-								<li>Compass Coffee</li>
-							</ul>
-						</div>
+        <section id="saturday" class="content-section">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-teal-700 mb-1">Saturday, May 31st: Deep Dive into American History & A Special Evening</h2>
+                <p class="text-gray-600 mb-6">A full day exploring significant historical sites, culminating in a memorable dinner. Be prepared for scattered showers and thunderstorms.</p>
+                <div class="booking-urgent">
+                    <p class="font-semibold text-yellow-700">URGENT: Attempt to book timed entry for National Archives Museum ASAP!</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="activity-card border-blue-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">8:30 AM - 9:30 AM: Breakfast & Coffee</h3>
+                        <p class="text-gray-700 font-medium mb-1">Options (Near Hotel):</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                            <li>Tatte Bakery & Cafe</li>
+                            <li>A Baked Joint (Mt. Vernon Triangle)</li>
+                            <li>Compass Coffee</li>
+                        </ul>
+                    </div>
 
-						<div class="activity-card border-blue-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								10:00 AM - 1:00 PM: National Archives Museum
-							</h3>
-							<p class="text-gray-700">
-								View the Declaration of Independence, Constitution, Bill of
-								Rights, and other historical documents.
-							</p>
-							<div class="booking-urgent">
-								<p class="font-semibold text-yellow-700">
-									Attempt to book timed entry ASAP! If unavailable, prepare for
-									standby line.
-								</p>
-							</div>
-						</div>
+                    <div class="activity-card border-blue-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">10:00 AM - 1:00 PM: National Archives Museum</h3>
+                        <p class="text-gray-700">View the Declaration of Independence, Constitution, Bill of Rights, and other historical documents.</p>
+                        <div class="booking-urgent">
+                            <p class="font-semibold text-yellow-700">Attempt to book timed entry ASAP! If unavailable, prepare for standby line.</p>
+                        </div>
+                    </div>
 
-						<div class="activity-card border-blue-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								1:00 PM - 2:00 PM: Lunch
-							</h3>
-							<p class="text-gray-700 font-medium mb-1">
-								Options (Near National Mall/Penn Quarter):
-							</p>
-							<ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
-								<li>
-									Museum Cafes (National Gallery of Art, American History)
-								</li>
-								<li>Quick & Casual: District Taco, Cava</li>
-								<li>Sit-Down (Good): Oyamel Cocina Mexicana, Zaytinya</li>
-							</ul>
-						</div>
+                    <div class="activity-card border-blue-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">1:00 PM - 2:00 PM: Lunch</h3>
+                        <p class="text-gray-700 font-medium mb-1">Options (Near National Mall/Penn Quarter):</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                            <li>Museum Cafes (National Gallery of Art, American History)</li>
+                            <li>Quick & Casual: District Taco, Cava</li>
+                            <li>Sit-Down (Good): Oyamel Cocina Mexicana, Zaytinya</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-card border-blue-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">2:30 PM - 5:00 PM: Smithsonian National Museum of American History</h3>
+                        <p class="text-gray-700">Explore exhibits like the Star-Spangled Banner, The American Presidency, First Ladies' Gowns, etc. Focus on 2-3 wings.</p>
+                    </div>
 
-						<div class="activity-card border-blue-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								2:30 PM - 5:00 PM: Smithsonian National Museum of American
-								History
-							</h3>
-							<p class="text-gray-700">
-								Explore exhibits like the Star-Spangled Banner, The American
-								Presidency, First Ladies' Gowns, etc. Focus on 2-3 wings.
-							</p>
-						</div>
+                    <div class="activity-card border-gray-400 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">5:00 PM - 6:00 PM: Downtime / Relax at Hotel</h3>
+                        <p class="text-gray-700">Freshen up, rest your feet. Allow time to travel to dinner.</p>
+                    </div>
 
-						<div class="activity-card border-gray-400 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								5:00 PM - 6:00 PM: Downtime / Relax at Hotel
-							</h3>
-							<p class="text-gray-700">
-								Freshen up, rest your feet. Allow time to travel to dinner.
-							</p>
-						</div>
+                    <div class="activity-card border-purple-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">6:30 PM: Dinner Reservation</h3>
+                        <p class="text-gray-700 font-medium">Founding Farmers DC</p>
+                        <p class="address-text">1924 Pennsylvania Avenue NW, Washington, DC 20006</p>
+                        <p class="text-sm text-gray-600 mt-1">Party of 2.</p>
+                        <div class="map-container mx-auto">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.5369219849426!2d-77.04515973055888!3d38.900176332752565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7ba71339f93%3A0xe1e601d765c550f5!2sFounding%20Farmers%20DC!5e0!3m2!1sen!2sus!4v1748353438881!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 text-center">Map embed may not be reliable due to the provided URL. Copy address for your map app if needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						<div class="activity-card border-purple-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								6:30 PM: Dinner Reservation
-							</h3>
-							<p class="text-gray-700 font-medium">Founding Farmers DC</p>
-							<p class="address-text">
-								1924 Pennsylvania Avenue NW, Washington, DC 20006
-							</p>
-							<p class="text-sm text-gray-600 mt-1">Party of 2.</p>
-							<div class="map-container mx-auto">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.5369219849426!2d-77.04515973055888!3d38.900176332752565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7ba71339f93%3A0xe1e601d765c550f5!2sFounding%20Farmers%20DC!5e0!3m2!1sen!2sus!4v1748353438881!5m2!1sen!2sus"
-									allowfullscreen=""
-									loading="lazy"
-									referrerpolicy="no-referrer-when-downgrade"
-								></iframe>
-							</div>
-							<p class="text-xs text-gray-500 mt-2 text-center">
-								Map embed may not be reliable due to the provided URL. Copy
-								address for your map app if needed.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
+        <section id="sunday" class="content-section">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-teal-700 mb-1">Sunday, June 1st: Science, Memorials & Farewell</h2>
+                <p class="text-gray-600 mb-6">Focus on science and iconic memorials before preparing for departure. Best weather day for outdoor activities!</p>
+                <div class="space-y-6">
+                    <div class="activity-card border-green-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">8:30 AM - 9:30 AM: Breakfast & Coffee</h3>
+                        <p class="text-gray-700 font-medium mb-1">Options (Near Hotel):</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                            <li>Bluestone Lane</li>
+                            <li>La Colombe Coffee Roasters</li>
+                        </ul>
+                    </div>
 
-			<section id="sunday" class="content-section">
-				<div class="bg-white p-6 rounded-lg shadow-lg">
-					<h2 class="text-2xl font-semibold text-teal-700 mb-1">
-						Sunday, June 1st: Science, Memorials & Farewell
-					</h2>
-					<p class="text-gray-600 mb-6">
-						Focus on science and iconic memorials before preparing for
-						departure. Best weather day for outdoor activities!
-					</p>
-					<div class="booking-urgent">
-						<p class="font-semibold text-yellow-700">
-							REMINDER: Attempt to get next-day timed entry passes for Air &
-							Space Museum on Saturday morning (8:30 AM ET).
-						</p>
-					</div>
-					<div class="space-y-6">
-						<div class="activity-card border-green-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								8:30 AM - 9:30 AM: Breakfast & Coffee
-							</h3>
-							<p class="text-gray-700 font-medium mb-1">
-								Options (Near Hotel):
-							</p>
-							<ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
-								<li>Bluestone Lane</li>
-								<li>La Colombe Coffee Roasters</li>
-							</ul>
-						</div>
+                    <div class="activity-card border-green-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">10:00 AM - 1:00 PM: Smithsonian National Air and Space Museum</h3>
+                        <div class="booking-confirmed">
+                             <p class="font-semibold text-green-700">Timed-Entry Passes Secured: Sun, Jun 1, 2025 10:00 AM</p>
+                             <p class="text-sm text-gray-600">Location: 601 Independence Avenue Southwest, Washington, DC 20004</p>
+                        </div>
+                        <p class="text-gray-700 mt-2">Explore iconic aircraft, spacecraft, and astronomy exhibits.</p>
+                        <p class="text-gray-700 mt-2"><em>(Alternative if other plans change: Smithsonian National Museum of Natural History. Generally does not require timed passes.)</em></p>
+                    </div>
+                    
+                    <div class="activity-card border-green-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">1:00 PM - 2:00 PM: Lunch</h3>
+                        <p class="text-gray-700 font-medium mb-1">Options (Near National Mall):</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                            <li>Food Trucks (Check along 7th Street NW)</li>
+                            <li>Casual Sit-Down: Good Stuff Eatery (Capitol Hill), Founding Farmers</li>
+                        </ul>
+                    </div>
 
-						<div class="activity-card border-green-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								10:00 AM - 1:00 PM: Smithsonian National Air and Space Museum
-								(National Mall Building)
-							</h3>
-							<p class="text-gray-700">
-								Explore iconic aircraft, spacecraft, and astronomy exhibits.
-							</p>
-							<div class="booking-urgent">
-								<p class="font-semibold text-yellow-700">
-									Attempt to get next-day timed entry passes on Saturday morning
-									at 8:30 AM ET. If unavailable, have backup plan (Natural
-									History Museum).
-								</p>
-							</div>
-							<p class="text-gray-700 mt-2">
-								<strong>Alternative if passes aren't available:</strong>
-								Smithsonian National Museum of Natural History (Dinosaurs, Hope
-								Diamond, Ocean Hall). Generally does not require timed passes.
-							</p>
-						</div>
+                    <div class="activity-card border-green-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">2:30 PM - 5:00 PM: National Mall Memorials Walk</h3>
+                        <p class="text-gray-700">Wear comfortable shoes! Start near museums, walk west.</p>
+                        <p class="text-gray-700 font-medium mb-1 mt-2">Key Sights:</p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                            <li>World War II Memorial</li>
+                            <li>Washington Monument (exterior view & grounds)</li>
+                            <li>Reflecting Pool</li>
+                            <li>Vietnam Veterans Memorial</li>
+                            <li>Korean War Veterans Memorial</li>
+                            <li>Lincoln Memorial</li>
+                        </ul>
+                        <p class="text-gray-700 mt-2"><strong>Optional Extension:</strong> Walk around Tidal Basin (Jefferson Memorial, MLK Jr. Memorial, FDR Memorial).</p>
+                    </div>
 
-						<div class="activity-card border-green-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								1:00 PM - 2:00 PM: Lunch
-							</h3>
-							<p class="text-gray-700 font-medium mb-1">
-								Options (Near National Mall):
-							</p>
-							<ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
-								<li>Food Trucks (Check along 7th Street NW)</li>
-								<li>
-									Casual Sit-Down: Good Stuff Eatery (Capitol Hill), Founding
-									Farmers
-								</li>
-							</ul>
-						</div>
+                    <div class="activity-card border-gray-400 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">5:00 PM - 6:00 PM: Downtime / Relax at Hotel</h3>
+                        <p class="text-gray-700">Rest and prepare for your farewell dinner. Allow time to travel to dinner.</p>
+                    </div>
 
-						<div class="activity-card border-green-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								2:30 PM - 5:00 PM: National Mall Memorials Walk
-							</h3>
-							<p class="text-gray-700">
-								Wear comfortable shoes! Start near museums, walk west.
-							</p>
-							<p class="text-gray-700 font-medium mb-1 mt-2">Key Sights:</p>
-							<ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
-								<li>World War II Memorial</li>
-								<li>Washington Monument (exterior view & grounds)</li>
-								<li>Reflecting Pool</li>
-								<li>Vietnam Veterans Memorial</li>
-								<li>Korean War Veterans Memorial</li>
-								<li>Lincoln Memorial</li>
-							</ul>
-							<p class="text-gray-700 mt-2">
-								<strong>Optional Extension:</strong> Walk around Tidal Basin
-								(Jefferson Memorial, MLK Jr. Memorial, FDR Memorial).
-							</p>
-						</div>
+                    <div class="activity-card border-purple-500 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">6:30 PM: Dinner Reservation</h3>
+                        <p class="text-gray-700 font-medium">RPM Italian - DC</p>
+                        <p class="address-text">650 K Street NW, Washington, DC, 20001</p>
+                        <p class="text-sm text-gray-600 mt-1">Party of 2.</p>
+                        <div class="map-container mx-auto">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14769.766209872701!2d-77.04771949015179!3d38.90201023942237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b78d76411941%3A0x7d0282530d980673!2sRPM%20Italian!5e0!3m2!1sen!2sus!4v1748353486482!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 text-center">Map embed may not be reliable due to the provided URL. Copy address for your map app if needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						<div class="activity-card border-gray-400 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								5:00 PM - 6:00 PM: Downtime / Relax at Hotel
-							</h3>
-							<p class="text-gray-700">
-								Rest and prepare for your farewell dinner. Allow time to travel
-								to dinner.
-							</p>
-						</div>
+        <section id="weather" class="content-section">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold text-teal-700 mb-1">Weather Forecast: Washington D.C.</h2>
+                <p class="text-gray-600 mb-6">Expected weather for your trip (May 30th - June 1st, 2025). This forecast is based on information from weather.com. Remember to check again closer to your travel dates as forecasts can change.</p>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="weather-card border-orange-400 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-3 text-center">Friday, May 30th</h3>
+                        <div class="text-center mb-3">
+                            <span class="weather-icon" title="Rain showers & Thunderstorms">⛈️</span> 
+                        </div>
+                        <p class="text-lg text-gray-700 text-center mb-1">Rain showers (AM), Thunderstorms (PM)</p>
+                        <p class="text-2xl font-bold text-gray-800 text-center">77°F / 60°F</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            <p><span class="font-semibold">Chance of Rain:</span> 70%</p>
+                            <p><span class="font-semibold">Wind:</span> WNW 5-10 mph</p>
+                            <p><span class="font-semibold">Humidity (Day):</span> 74%</p>
+                            <p><span class="font-semibold">UV Index:</span> 4 (Moderate)</p>
+                        </div>
+                    </div>
 
-						<div class="activity-card border-purple-500 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-2">
-								6:30 PM: Dinner Reservation
-							</h3>
-							<p class="text-gray-700 font-medium">RPM Italian - DC</p>
-							<p class="address-text">650 K Street NW, Washington, DC, 20001</p>
-							<p class="text-sm text-gray-600 mt-1">Party of 2.</p>
-							<div class="map-container mx-auto">
-								<iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14769.766209872701!2d-77.04771949015179!3d38.90201023942237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b78d76411941%3A0x7d0282530d980673!2sRPM%20Italian!5e0!3m2!1sen!2sus!4v1748353486482!5m2!1sen!2sus"
-									allowfullscreen=""
-									loading="lazy"
-									referrerpolicy="no-referrer-when-downgrade"
-								></iframe>
-							</div>
-							<p class="text-xs text-gray-500 mt-2 text-center">
-								Map embed may not be reliable due to the provided URL. Copy
-								address for your map app if needed.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
+                    <div class="weather-card border-yellow-400 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-3 text-center">Saturday, May 31st</h3>
+                         <div class="text-center mb-3">
+                            <span class="weather-icon" title="Scattered Showers & Thunderstorms">🌦️</span>
+                        </div>
+                        <p class="text-lg text-gray-700 text-center mb-1">Scattered Showers & Thunderstorms</p>
+                        <p class="text-2xl font-bold text-gray-800 text-center">74°F / 55°F</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            <p><span class="font-semibold">Chance of Rain:</span> 40%</p>
+                            <p><span class="font-semibold">Wind:</span> WNW 10-20 mph</p>
+                            <p><span class="font-semibold">Humidity (Day):</span> 60%</p>
+                            <p><span class="font-semibold">UV Index:</span> 8 (Very High)</p>
+                        </div>
+                    </div>
 
-			<section id="weather" class="content-section">
-				<div class="bg-white p-6 rounded-lg shadow-lg">
-					<h2 class="text-2xl font-semibold text-teal-700 mb-1">
-						Weather Forecast: Washington D.C.
-					</h2>
-					<p class="text-gray-600 mb-6">
-						Expected weather for your trip (May 30th - June 1st, 2025). This
-						forecast is based on information from weather.com. Remember to check
-						again closer to your travel dates as forecasts can change.
-					</p>
+                    <div class="weather-card border-sky-400 p-5 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-3 text-center">Sunday, June 1st</h3>
+                        <div class="text-center mb-3">
+                             <span class="weather-icon" title="Partly Cloudy">⛅</span>
+                        </div>
+                        <p class="text-lg text-gray-700 text-center mb-1">Partly Cloudy</p>
+                        <p class="text-2xl font-bold text-gray-800 text-center">74°F / 58°F</p>
+                        <div class="mt-3 text-sm text-gray-600">
+                            <p><span class="font-semibold">Chance of Rain:</span> 20%</p>
+                            <p><span class="font-semibold">Wind:</span> W 5-10 mph</p>
+                            <p><span class="font-semibold">Humidity (Day):</span> 51%</p>
+                            <p><span class="font-semibold">UV Index:</span> 9 (Very High)</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-6 text-center">Weather data from weather.com</p>
+            </div>
+        </section>
+        
+        <section class="bg-white p-6 rounded-lg shadow-lg mt-8">
+             <h2 class="text-2xl font-semibold text-teal-700 mb-4">General Notes & Tips</h2>
+             <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li><strong>Transportation:</strong> Your hotel is well-located for walking. For longer distances, the Metro is efficient. Ride-sharing (Uber/Lyft) is also readily available.</li>
+                <li><strong>Comfortable Shoes:</strong> You'll be doing a LOT of walking! This cannot be stressed enough.</li>
+                <li><strong>Water & Snacks:</strong> Stay hydrated, especially if it's warm. Carry a water bottle and maybe some small snacks. Museum cafes can be pricey.</li>
+                <li><strong>Security:</strong> Be prepared for security checks (bag checks, metal detectors) at all museums and federal buildings. Lines can form for these as well.</li>
+                <li><strong>Flexibility:</strong> This is a packed itinerary. Feel free to swap activities, spend more time where you're enjoying yourselves, or take extra breaks. The goal is to enjoy your trip!</li>
+                <li><strong>Weather Preparedness:</strong> Given the forecast, an umbrella and perhaps light rain jackets will be essential, especially for Friday (70% rain) and Saturday (40% rain). Sunday looks like the best day. Always good to double-check the forecast closer to your travel dates.</li>
+             </ul>
+        </section>
+    </main>
 
-					<div class="grid md:grid-cols-3 gap-6">
-						<div class="weather-card border-orange-400 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-3 text-center">
-								Friday, May 30th
-							</h3>
-							<div class="text-center mb-3">
-								<span class="weather-icon" title="Rain showers & Thunderstorms"
-									>⛈️</span
-								>
-							</div>
-							<p class="text-lg text-gray-700 text-center mb-1">
-								Rain showers (AM), Thunderstorms (PM)
-							</p>
-							<p class="text-2xl font-bold text-gray-800 text-center">
-								77°F / 60°F
-							</p>
-							<div class="mt-3 text-sm text-gray-600">
-								<p><span class="font-semibold">Chance of Rain:</span> 70%</p>
-								<p><span class="font-semibold">Wind:</span> WNW 5-10 mph</p>
-								<p><span class="font-semibold">Humidity (Day):</span> 74%</p>
-								<p><span class="font-semibold">UV Index:</span> 4 (Moderate)</p>
-							</div>
-						</div>
+    <footer class="text-center py-8 mt-8 border-t border-gray-200">
+        <p class="text-gray-500 text-sm">Have a wonderful trip to Washington D.C.!</p>
+    </footer>
 
-						<div class="weather-card border-yellow-400 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-3 text-center">
-								Saturday, May 31st
-							</h3>
-							<div class="text-center mb-3">
-								<span
-									class="weather-icon"
-									title="Scattered Showers & Thunderstorms"
-									>🌦️</span
-								>
-							</div>
-							<p class="text-lg text-gray-700 text-center mb-1">
-								Scattered Showers & Thunderstorms
-							</p>
-							<p class="text-2xl font-bold text-gray-800 text-center">
-								74°F / 55°F
-							</p>
-							<div class="mt-3 text-sm text-gray-600">
-								<p><span class="font-semibold">Chance of Rain:</span> 40%</p>
-								<p><span class="font-semibold">Wind:</span> WNW 10-20 mph</p>
-								<p><span class="font-semibold">Humidity (Day):</span> 60%</p>
-								<p>
-									<span class="font-semibold">UV Index:</span> 8 (Very High)
-								</p>
-							</div>
-						</div>
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const contentSections = document.querySelectorAll('.content-section');
 
-						<div class="weather-card border-sky-400 p-5 rounded-lg shadow">
-							<h3 class="text-xl font-semibold mb-3 text-center">
-								Sunday, June 1st
-							</h3>
-							<div class="text-center mb-3">
-								<span class="weather-icon" title="Partly Cloudy">⛅</span>
-							</div>
-							<p class="text-lg text-gray-700 text-center mb-1">
-								Partly Cloudy
-							</p>
-							<p class="text-2xl font-bold text-gray-800 text-center">
-								74°F / 58°F
-							</p>
-							<div class="mt-3 text-sm text-gray-600">
-								<p><span class="font-semibold">Chance of Rain:</span> 20%</p>
-								<p><span class="font-semibold">Wind:</span> W 5-10 mph</p>
-								<p><span class="font-semibold">Humidity (Day):</span> 51%</p>
-								<p>
-									<span class="font-semibold">UV Index:</span> 9 (Very High)
-								</p>
-							</div>
-						</div>
-					</div>
-					<p class="text-xs text-gray-500 mt-6 text-center">
-						Weather data from weather.com
-					</p>
-				</div>
-			</section>
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
 
-			<section class="bg-white p-6 rounded-lg shadow-lg mt-8">
-				<h2 class="text-2xl font-semibold text-teal-700 mb-4">
-					General Notes & Tips
-				</h2>
-				<ul class="list-disc list-inside text-gray-700 space-y-2">
-					<li>
-						<strong>Transportation:</strong> Your hotel is well-located for
-						walking. For longer distances, the Metro is efficient. Ride-sharing
-						(Uber/Lyft) is also readily available.
-					</li>
-					<li>
-						<strong>Comfortable Shoes:</strong> You'll be doing a LOT of
-						walking! This cannot be stressed enough.
-					</li>
-					<li>
-						<strong>Water & Snacks:</strong> Stay hydrated, especially if it's
-						warm. Carry a water bottle and maybe some small snacks. Museum cafes
-						can be pricey.
-					</li>
-					<li>
-						<strong>Security:</strong> Be prepared for security checks (bag
-						checks, metal detectors) at all museums and federal buildings. Lines
-						can form for these as well.
-					</li>
-					<li>
-						<strong>Flexibility:</strong> This is a packed itinerary. Feel free
-						to swap activities, spend more time where you're enjoying
-						yourselves, or take extra breaks. The goal is to enjoy your trip!
-					</li>
-					<li>
-						<strong>Weather Preparedness:</strong> Given the forecast, an
-						umbrella and perhaps light rain jackets will be essential,
-						especially for Friday (70% rain) and Saturday (40% rain). Sunday
-						looks like the best day. Always good to double-check the forecast
-						closer to your travel dates.
-					</li>
-				</ul>
-			</section>
-		</main>
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
 
-		<footer class="text-center py-8 mt-8 border-t border-gray-200">
-			<p class="text-gray-500 text-sm">
-				Have a wonderful trip to Washington D.C.!
-			</p>
-		</footer>
+                contentSections.forEach(section => {
+                    if (section.id === tabId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
 
-		<script>
-			const tabButtons = document.querySelectorAll(".tab-button");
-			const contentSections = document.querySelectorAll(".content-section");
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        if (ctx) { // Check if chart canvas exists
+            const activityChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Friday', 'Saturday', 'Sunday'],
+                    datasets: [{
+                        label: 'Main Planned Activities',
+                        data: [1, 3, 3], 
+                        backgroundColor: [
+                            'rgba(15, 118, 110, 0.6)', 
+                            'rgba(59, 130, 246, 0.6)', 
+                            'rgba(34, 197, 94, 0.6)'  
+                        ],
+                        borderColor: [
+                            'rgba(15, 118, 110, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(34, 197, 94, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            },
+                            title: {
+                                display: true,
+                                text: 'Number of Activities'
+                            }
+                        },
+                        x: {
+                             title: {
+                                display: true,
+                                text: 'Day of Trip'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false 
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 
-			tabButtons.forEach((button) => {
-				button.addEventListener("click", () => {
-					const tabId = button.dataset.tab;
-
-					tabButtons.forEach((btn) => {
-						btn.classList.remove("active");
-					});
-					button.classList.add("active");
-
-					contentSections.forEach((section) => {
-						if (section.id === tabId) {
-							section.classList.add("active");
-						} else {
-							section.classList.remove("active");
-						}
-					});
-					window.scrollTo({ top: 0, behavior: "smooth" });
-				});
-			});
-
-			const ctx = document.getElementById("activityChart").getContext("2d");
-			if (ctx) {
-				// Check if chart canvas exists
-				const activityChart = new Chart(ctx, {
-					type: "bar",
-					data: {
-						labels: ["Friday", "Saturday", "Sunday"],
-						datasets: [
-							{
-								label: "Main Planned Activities",
-								data: [1, 3, 3],
-								backgroundColor: [
-									"rgba(15, 118, 110, 0.6)",
-									"rgba(59, 130, 246, 0.6)",
-									"rgba(34, 197, 94, 0.6)",
-								],
-								borderColor: [
-									"rgba(15, 118, 110, 1)",
-									"rgba(59, 130, 246, 1)",
-									"rgba(34, 197, 94, 1)",
-								],
-								borderWidth: 1,
-							},
-						],
-					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: false,
-						scales: {
-							y: {
-								beginAtZero: true,
-								ticks: {
-									stepSize: 1,
-								},
-								title: {
-									display: true,
-									text: "Number of Activities",
-								},
-							},
-							x: {
-								title: {
-									display: true,
-									text: "Day of Trip",
-								},
-							},
-						},
-						plugins: {
-							legend: {
-								display: false,
-							},
-							tooltip: {
-								callbacks: {
-									label: function (context) {
-										let label = context.dataset.label || "";
-										if (label) {
-											label += ": ";
-										}
-										if (context.parsed.y !== null) {
-											label += context.parsed.y;
-										}
-										return label;
-									},
-								},
-							},
-						},
-					},
-				});
-			}
-		</script>
-	</body>
+</body>
 </html>
