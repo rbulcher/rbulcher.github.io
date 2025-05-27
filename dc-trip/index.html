@@ -10,7 +10,7 @@
         - Itinerary Data (Schedule, Activities, Meals, Notes): Report Info -> Daily schedule items. Goal -> Inform, Organize. Viz/Presentation -> Structured HTML lists and cards within tabbed sections. Interaction -> Tab selection to view specific day. Justification -> Clear, chronological presentation. Library/Method -> HTML/CSS/Tailwind + JS for tab functionality.
         - Booking Reminders: Report Info -> Urgent booking notes. Goal -> Alert, Inform. Viz/Presentation -> Visually highlighted text blocks. Interaction -> None. Justification -> Highlighting critical action items. Library/Method -> HTML/CSS/Tailwind.
         - Activity Count Chart: Report Info -> Number of main activities per day (derived: Fri-1, Sat-3, Sun-3). Goal -> Compare daily activity load. Viz/Presentation -> Vertical Bar Chart. Interaction -> None. Justification -> Quick visual summary. Library/Method -> Chart.js on Canvas.
-        - Weather Data: Report Info -> Searched weather forecast. Goal -> Inform. Viz/Presentation -> Structured HTML cards for each day's forecast. Interaction -> None. Justification -> Provides essential travel planning information. Library/Method -> HTML/CSS/Tailwind.
+        - Weather Data: Report Info -> User-provided weather image. Goal -> Inform. Viz/Presentation -> Structured HTML cards for each day's forecast. Interaction -> None. Justification -> Provides essential travel planning information. Library/Method -> HTML/CSS/Tailwind.
         - Map Embeds: Report Info -> User-provided iframe code for restaurant locations. Goal -> Visualize location. Viz/Presentation -> Embedded iframes. Interaction -> Standard map interaction if iframe loads. Justification -> User request. Library/Method -> HTML iframe.
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 		<style>
@@ -70,7 +70,7 @@
 			.map-container {
 				width: 100%;
 				max-width: 560px; /* Slightly less than card for padding */
-				height: 300px; /* Or aspect-ratio with Tailwind */
+				height: 300px;
 				margin-top: 0.75rem; /* my-3 */
 				border-radius: 0.375rem; /* rounded-md */
 				overflow: hidden; /* To ensure border-radius applies to iframe */
@@ -194,7 +194,8 @@
 						Friday, May 30th: Arrival & Evening Exploration
 					</h2>
 					<p class="text-gray-600 mb-6">
-						Welcome to D.C.! Settle in and enjoy your first evening.
+						Welcome to D.C.! Settle in and enjoy your first evening. Be prepared
+						for rain and potential thunderstorms.
 					</p>
 
 					<div class="space-y-6">
@@ -243,7 +244,8 @@
 							<p class="text-gray-700">
 								A walk through the Penn Quarter/Chinatown area, or if feeling
 								energetic, a slightly longer stroll towards the National Mall to
-								see some of the monuments lit up from a distance.
+								see some of the monuments lit up from a distance. (Weather
+								permitting - high chance of rain).
 							</p>
 						</div>
 					</div>
@@ -258,7 +260,8 @@
 					</h2>
 					<p class="text-gray-600 mb-6">
 						A full day exploring significant historical sites, culminating in a
-						memorable dinner.
+						memorable dinner. Be prepared for scattered showers and
+						thunderstorms.
 					</p>
 					<div class="booking-urgent">
 						<p class="font-semibold text-yellow-700">
@@ -327,9 +330,11 @@
 
 						<div class="activity-card border-gray-400 p-5 rounded-lg shadow">
 							<h3 class="text-xl font-semibold mb-2">
-								5:00 PM - 7:00 PM: Downtime / Relax at Hotel
+								5:00 PM - 6:00 PM: Downtime / Relax at Hotel
 							</h3>
-							<p class="text-gray-700">Freshen up, rest your feet.</p>
+							<p class="text-gray-700">
+								Freshen up, rest your feet. Allow time to travel to dinner.
+							</p>
 						</div>
 
 						<div class="activity-card border-purple-500 p-5 rounded-lg shadow">
@@ -365,7 +370,7 @@
 					</h2>
 					<p class="text-gray-600 mb-6">
 						Focus on science and iconic memorials before preparing for
-						departure.
+						departure. Best weather day for outdoor activities!
 					</p>
 					<div class="booking-urgent">
 						<p class="font-semibold text-yellow-700">
@@ -449,10 +454,11 @@
 
 						<div class="activity-card border-gray-400 p-5 rounded-lg shadow">
 							<h3 class="text-xl font-semibold mb-2">
-								5:00 PM - 6:30 PM: Downtime / Relax at Hotel
+								5:00 PM - 6:00 PM: Downtime / Relax at Hotel
 							</h3>
 							<p class="text-gray-700">
-								Rest and prepare for your farewell dinner.
+								Rest and prepare for your farewell dinner. Allow time to travel
+								to dinner.
 							</p>
 						</div>
 
@@ -486,9 +492,9 @@
 						Weather Forecast: Washington D.C.
 					</h2>
 					<p class="text-gray-600 mb-6">
-						Expected weather for your trip (May 30th - June 1st, 2025). Please
-						note: Forecasts this far out are subject to change. Check again
-						closer to your travel dates for more accuracy.
+						Expected weather for your trip (May 30th - June 1st, 2025). This
+						forecast is based on information from weather.com. Remember to check
+						again closer to your travel dates as forecasts can change.
 					</p>
 
 					<div class="grid md:grid-cols-3 gap-6">
@@ -497,23 +503,21 @@
 								Friday, May 30th
 							</h3>
 							<div class="text-center mb-3">
-								<span class="weather-icon" title="Partly Cloudy">⛅</span>
+								<span class="weather-icon" title="Rain showers & Thunderstorms"
+									>⛈️</span
+								>
 							</div>
 							<p class="text-lg text-gray-700 text-center mb-1">
-								Partly Cloudy
+								Rain showers (AM), Thunderstorms (PM)
 							</p>
 							<p class="text-2xl font-bold text-gray-800 text-center">
-								75°F / 58°F
+								77°F / 60°F
 							</p>
-							<p class="text-sm text-gray-500 text-center">(24°C / 14°C)</p>
 							<div class="mt-3 text-sm text-gray-600">
-								<p>
-									<span class="font-semibold">Precipitation:</span> 20% chance
-								</p>
-								<p>
-									<span class="font-semibold">Wind:</span> Light and variable
-								</p>
-								<p><span class="font-semibold">Humidity:</span> Moderate</p>
+								<p><span class="font-semibold">Chance of Rain:</span> 70%</p>
+								<p><span class="font-semibold">Wind:</span> WNW 5-10 mph</p>
+								<p><span class="font-semibold">Humidity (Day):</span> 74%</p>
+								<p><span class="font-semibold">UV Index:</span> 4 (Moderate)</p>
 							</div>
 						</div>
 
@@ -522,20 +526,24 @@
 								Saturday, May 31st
 							</h3>
 							<div class="text-center mb-3">
-								<span class="weather-icon" title="Sunny">☀️</span>
+								<span
+									class="weather-icon"
+									title="Scattered Showers & Thunderstorms"
+									>🌦️</span
+								>
 							</div>
-							<p class="text-lg text-gray-700 text-center mb-1">Sunny</p>
-							<p class="text-2xl font-bold text-gray-800 text-center">
-								78°F / 60°F
+							<p class="text-lg text-gray-700 text-center mb-1">
+								Scattered Showers & Thunderstorms
 							</p>
-							<p class="text-sm text-gray-500 text-center">(26°C / 16°C)</p>
+							<p class="text-2xl font-bold text-gray-800 text-center">
+								74°F / 55°F
+							</p>
 							<div class="mt-3 text-sm text-gray-600">
+								<p><span class="font-semibold">Chance of Rain:</span> 40%</p>
+								<p><span class="font-semibold">Wind:</span> WNW 10-20 mph</p>
+								<p><span class="font-semibold">Humidity (Day):</span> 60%</p>
 								<p>
-									<span class="font-semibold">Precipitation:</span> 10% chance
-								</p>
-								<p><span class="font-semibold">Wind:</span> Gentle breeze</p>
-								<p>
-									<span class="font-semibold">Humidity:</span> Low to Moderate
+									<span class="font-semibold">UV Index:</span> 8 (Very High)
 								</p>
 							</div>
 						</div>
@@ -545,32 +553,26 @@
 								Sunday, June 1st
 							</h3>
 							<div class="text-center mb-3">
-								<span class="weather-icon" title="Scattered Showers">🌦️</span>
+								<span class="weather-icon" title="Partly Cloudy">⛅</span>
 							</div>
 							<p class="text-lg text-gray-700 text-center mb-1">
-								Scattered Showers Possible
+								Partly Cloudy
 							</p>
 							<p class="text-2xl font-bold text-gray-800 text-center">
-								73°F / 57°F
+								74°F / 58°F
 							</p>
-							<p class="text-sm text-gray-500 text-center">(23°C / 14°C)</p>
 							<div class="mt-3 text-sm text-gray-600">
+								<p><span class="font-semibold">Chance of Rain:</span> 20%</p>
+								<p><span class="font-semibold">Wind:</span> W 5-10 mph</p>
+								<p><span class="font-semibold">Humidity (Day):</span> 51%</p>
 								<p>
-									<span class="font-semibold">Precipitation:</span> 40% chance
-								</p>
-								<p>
-									<span class="font-semibold">Wind:</span> Westerly, moderate
-								</p>
-								<p>
-									<span class="font-semibold">Humidity:</span> Moderate to High
+									<span class="font-semibold">UV Index:</span> 9 (Very High)
 								</p>
 							</div>
 						</div>
 					</div>
 					<p class="text-xs text-gray-500 mt-6 text-center">
-						Weather data is illustrative based on typical conditions and
-						long-range estimates. Actual conditions may vary. Icons are Unicode
-						characters representing general weather.
+						Weather data from weather.com
 					</p>
 				</div>
 			</section>
@@ -605,9 +607,11 @@
 						yourselves, or take extra breaks. The goal is to enjoy your trip!
 					</li>
 					<li>
-						<strong>Weather:</strong> D.C. weather in late May/early June can be
-						warm and humid. Check the forecast and dress accordingly. An
-						umbrella might be useful for sun or rain.
+						<strong>Weather Preparedness:</strong> Given the forecast, an
+						umbrella and perhaps light rain jackets will be essential,
+						especially for Friday (70% rain) and Saturday (40% rain). Sunday
+						looks like the best day. Always good to double-check the forecast
+						closer to your travel dates.
 					</li>
 				</ul>
 			</section>
